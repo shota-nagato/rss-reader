@@ -1,0 +1,39 @@
+services:
+  postgres:
+    image: postgres
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: bash -c "rm -f tmp/pids/server.pid && bin/dev"
+    environment:
+      TZ: Asia/Tokyo
+      BINDING: 0.0.0.0
+      PGHOST: postgres
+      PGUSER: postgres
+      PGPASSWORD: password
+      PORT: 3000
+      REDIS_URL: redis://redis:6379
+    volumes:
+      - .:/myapp
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true
+    depends_on:
+      - postgres
+      - redis
+  redis:
+    image: redis:latest
+    ports:
+      - 6379:6379
+    volumes:
+      - redis:/data
+
+volumes:
+  postgres:
+  redis:
