@@ -117,6 +117,9 @@ ja:
       already_signed_out: 既にログアウト済みです。
       new:
         sign_in: ログイン
+        description: 登録したアカウントでログインしてください。
+        login: "アカウントをお持ちでない方は、%{login_path}から登録できます。"
+        here: こちら
       signed_in: ログインしました。
       signed_out: ログアウトしました。
     shared:
