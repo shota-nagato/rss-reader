@@ -62,3 +62,5 @@ group :test do
   gem "capybara"
   gem "capybara-playwright-driver"
 end
+
+gem "devise"
