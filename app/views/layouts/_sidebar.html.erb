@@ -1,0 +1,83 @@
+<div
+  id="sidebar-background"
+  class="fixed inset-0 bg-slate-900 bg-opacity-30 z-10 md:hidden bg-opacity-30 opacity-0 pointer-events-none"
+  data-controller="sidebar"
+  data-action="click->sidebar#close">
+</div>
+<div id="sidebar" class="flex flex-col absolute left-0 top-0 z-20 md:static top-0 left-0 bg-white shadow p-4 w-[240px] h-screen transition-transform -translate-x-full md:translate-x-0">
+  <div class="font-bold text-xl mb-16">
+    RSS Reader
+  </div>
+
+  <div class="text-sm text-slate-500 mb-4">MENU</div>
+  <ul class="flex flex-col gap-2 mb-4">
+    <li>
+      <%= link_to user_root_path, class: "#{controller.controller_path == "dashboard" ? "text-green-400" : ""} flex items-center gap-2 px-4 py-2 rounded-sm hover:bg-gray-100 w-full" do %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0 0 20.25 18V6A2.25 2.25 0 0 0 18 3.75H6A2.25 2.25 0 0 0 3.75 6v12A2.25 2.25 0 0 0 6 20.25Z" />
+        </svg>
+        <div class="font-bold">ダッシュボード</div>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to "#", class: "#{controller.controller_path == "entries" ? "bg-[#333A48]" : "" } flex items-center gap-2 px-4 py-2 rounded-sm hover:bg-gray-100 w-full" do %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+        </svg>
+        <div class="font-bold">アプトプット</div>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to "#", class: "flex items-center gap-2 px-4 py-2 rounded-sm hover:bg-gray-100 w-full" do %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
+        </svg>
+        <div class="font-bold">なんでも質問</div>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to "#", class: "flex items-center gap-2 px-4 py-2 rounded-sm hover:bg-gray-100 w-full" do %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 6.878V6a2.25 2.25 0 0 1 2.25-2.25h7.5A2.25 2.25 0 0 1 18 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 0 0 4.5 9v.878m13.5-3A2.25 2.25 0 0 1 19.5 9v.878m0 0a2.246 2.246 0 0 0-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0 1 21 12v6a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 18v-6c0-.98.626-1.813 1.5-2.122" />
+        </svg>
+        <div class="font-bold">タスク</div>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to "#", class: "flex items-center gap-2 px-4 py-2 rounded-sm hover:bg-gray-100 w-full" do %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
+        </svg>
+        <div class="font-bold">メンバー</div>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to "#", class: "flex items-center gap-2 px-4 py-2 rounded-sm hover:bg-bg-gray-100 w-full" do %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" />
+        </svg>
+        <div class="font-bold">動画</div>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to "#", class: "flex items-center gap-2 px-4 py-2 rounded-sm hover:bg-bg-gray-100 w-full" do %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+        </svg>
+        <div class="font-bold">イベント</div>
+      <% end %>
+    </li>
+  </ul>
+
+  <div class="text-sm text-slate-500 mb-4">SUPPORT</div>
+  <ul>
+    <li>
+      <%= link_to "#", class: "flex items-center gap-2 px-4 py-2 rounded-sm hover:bg-gray-100 w-full" do %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+        </svg>
+        <div class="font-bold">ガイドライン</div>
+      <% end %>
+    </li>
+  </ul>
+</div>

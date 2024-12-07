@@ -11,6 +11,20 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="flex">
+      <% if user_signed_in? %>
+        <aside class="sticky top-0 h-screen z-20">
+          <%= render "layouts/sidebar" %>
+        </aside>
+      <% end %>
+      <div class="fle flex-col flex-1">
+        <% if user_signed_in? %>
+          <%= render "layouts/navbar" %>
+        <% end %>
+        <main>
+          <%= yield %>
+        </main>
+      </div>
+    </div>
   </body>
 </html>

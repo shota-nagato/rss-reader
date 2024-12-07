@@ -52,6 +52,7 @@ group :development, :test do
   gem "rspec-rails"
   gem "erb_lint", require: false
   gem "standard", require: false
+  gem "rails_live_reload"
 end
 
 group :development do
@@ -62,3 +63,6 @@ group :test do
   gem "capybara"
   gem "capybara-playwright-driver"
 end
+
+gem "devise"
+gem "view_component"
