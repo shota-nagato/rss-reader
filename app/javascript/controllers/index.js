@@ -4,7 +4,10 @@
 
 import { application } from "./application"
 import Dropdown from "@stimulus-components/dropdown"
+import Notification from "@stimulus-components/notification"
+
 application.register('dropdown', Dropdown)
+application.register('notification', Notification)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
