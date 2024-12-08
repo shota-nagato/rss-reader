@@ -8,7 +8,7 @@
       </div>
     </div>
 
-    <div class="bg-primary-light rounded p-8 md:w-[520px] mb-2">
+    <div class="bg-primary-light rounded p-8 md:w-[520px] min-w-[420px] mb-2">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -26,9 +26,7 @@
           </div>
         <% end %>
 
-        <div class="actions">
-          <%= f.submit t(".sign_in"), class: "py-2 px-4 bg-primary w-full text-white font-bold rounded disabled:bg-gray-400" %>
-        </div>
+        <%= render(ButtonComponent.new(text: t(".sign_in"), size: "large", type: :submit)) %>
       <% end %>
       <div class="relative py-4">
         <div class="absolute inset-0 flex items-center">

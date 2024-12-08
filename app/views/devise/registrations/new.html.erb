@@ -21,9 +21,7 @@
               <%= render(FormFieldComponent.new(form: f, field_type: :password_field, attribute_key: :password, placeholder: "パスワード")) %>
             </div>
 
-            <div class="actions">
-              <%= f.submit t(".submit"), class: "py-2 px-4 bg-primary w-full text-white font-bold rounded disabled:bg-gray-400" %>
-            </div>
+            <%= render(ButtonComponent.new(text: t(".submit"), size: "large", type: :submit)) %>
           <% end %>
           <div class="relative py-4">
             <div class="absolute inset-0 flex items-center">

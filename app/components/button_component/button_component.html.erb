@@ -1,0 +1,22 @@
+<% if @href.present? %>
+  <%= link_to(
+    @href,
+    class: class_text,
+    data: {
+      button_variant: @variant,
+      button_size: @size
+    }.merge(@data)
+  ) do %>
+    <%= @text %>
+  <% end %>
+<% else %>
+  <button
+    class="<%= class_text %>"
+    data-button-variant="<%= @variant %>"
+    data-button-size="<%= @size %>"
+    name="<%= @name %>"
+    type="<%= @type %>"
+  >
+    <%= @text %>
+  </button>
+<% end %>
