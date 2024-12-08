@@ -10,7 +10,7 @@
       </div>
 
       <div class="w-full max-w-lg">
-        <div class="bg-[#f1fcf1] rounded p-8">
+        <div class="bg-primary-light rounded p-8">
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
             <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -21,9 +21,7 @@
               <%= render(FormFieldComponent.new(form: f, field_type: :password_field, attribute_key: :password, placeholder: "パスワード")) %>
             </div>
 
-            <div class="actions">
-              <%= f.submit t(".submit"), class: "py-2 px-4 bg-[#36a934] w-full text-white font-bold rounded disabled:bg-gray-400" %>
-            </div>
+            <%= render(ButtonComponent.new(text: t(".submit"), size: "large", type: :submit)) %>
           <% end %>
           <div class="relative py-4">
             <div class="absolute inset-0 flex items-center">

@@ -1,0 +1,12 @@
+<div class="flex flex-col gap-8">
+  <div class="flex flex-col gap-2">
+    <%= render(HeadingComponent.new(size: "h1", text: "URLで登録")) %>
+    <%= form_with(model: @feed) do |form| %>
+      <%= render(FormFieldComponent.new(form: form, placeholder: "フィードのURL")) %>
+    <% end %>
+  </div>
+
+  <div class="flex flex-col gap-2">
+    <%= render(HeadingComponent.new(size: "h2", text: "カテゴリーから探す")) %>
+  </div>
+</div>

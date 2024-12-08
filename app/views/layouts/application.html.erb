@@ -10,7 +10,7 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
-  <body>
+  <body id="main-background">
     <div class="flex">
       <% if user_signed_in? %>
         <aside class="sticky top-0 h-screen z-20">
@@ -21,7 +21,10 @@
         <% if user_signed_in? %>
           <%= render "layouts/navbar" %>
         <% end %>
-        <main>
+        <div id="flash">
+          <%= render "shared/flash", flash: flash %>
+        </div>
+        <main class="px-8">
           <%= yield %>
         </main>
       </div>

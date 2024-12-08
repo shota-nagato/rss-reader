@@ -4,10 +4,19 @@
 
 import { application } from "./application"
 import Dropdown from "@stimulus-components/dropdown"
+import Notification from "@stimulus-components/notification"
+
 application.register('dropdown', Dropdown)
+application.register('notification', Notification)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import RemoveController from "./remove_controller"
+application.register("remove", RemoveController)
+
 import SidebarController from "./sidebar_controller"
 application.register("sidebar", SidebarController)
+
+import SlideOverController from "./slide_over_controller"
+application.register("slide-over", SlideOverController)
