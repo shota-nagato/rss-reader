@@ -1,7 +1,7 @@
 <% if @href.present? %>
   <%= link_to(
     @href,
-    class: class_text,
+    class: "border-2 border-primary data-[button-variant=outline]:border-primary data-[button-variant=outline]:text-primary inline-flex items-center justify-center gap-2 data-[button-variant=primary]:bg-primary text-white font-bold py-1 px-2 data-[button-size=large]:py-2 data-[button-size=large]:px-4 rounded w-full",
     data: {
       button_variant: @variant,
       button_size: @size
@@ -11,7 +11,7 @@
   <% end %>
 <% else %>
   <button
-    class="<%= class_text %>"
+    class="border-2 border-primary data-[button-variant=outline]:border-primary data-[button-variant=outline]:text-primary inline-flex items-center justify-center gap-2 data-[button-variant=primary]:bg-primary text-white font-bold py-1 px-2 data-[button-size=large]:py-2 data-[button-size=large]:px-4 rounded w-full"
     data-button-variant="<%= @variant %>"
     data-button-size="<%= @size %>"
     name="<%= @name %>"
