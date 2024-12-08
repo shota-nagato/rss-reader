@@ -10,7 +10,7 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
-  <body>
+  <body id="main-background">
     <div class="flex">
       <% if user_signed_in? %>
         <aside class="sticky top-0 h-screen z-20">

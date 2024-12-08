@@ -1,7 +1,7 @@
 <% if @href.present? %>
   <%= link_to(
     @href,
-    class: "border-2 border-primary data-[button-variant=outline]:border-primary data-[button-variant=outline]:text-primary inline-flex items-center justify-center gap-2 data-[button-variant=primary]:bg-primary text-white font-bold py-1 px-2 data-[button-size=large]:py-2 data-[button-size=large]:px-4 rounded w-full",
+    class: "border-2 border-primary data-[button-variant=outline]:border-primary hover:opacity-80 data-[button-variant=outline]:text-primary inline-flex items-center justify-center gap-2 data-[button-variant=primary]:bg-primary text-white text-sm data-[button-size=large]:text-md font-medium py-1 px-2 data-[button-size=large]:py-2 data-[button-size=large]:px-4 rounded",
     data: {
       button_variant: @variant,
       button_size: @size
