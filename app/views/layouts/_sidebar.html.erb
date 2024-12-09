@@ -4,7 +4,7 @@
   data-controller="sidebar"
   data-action="click->sidebar#close">
 </div>
-<div id="sidebar" class="flex flex-col absolute left-0 top-0 z-20 md:static top-0 left-0 bg-white shadow p-4 w-[240px] h-screen transition-transform -translate-x-full md:translate-x-0">
+<div id="sidebar" class="flex flex-col absolute left-0 top-0 z-20 md:static top-0 left-0 bg-gray-50 shadow p-4 w-[240px] h-screen transition-transform -translate-x-full md:translate-x-0">
   <div class="font-bold text-xl mb-16">
     RSS Reader
   </div>
@@ -29,7 +29,7 @@
     </li>
     <% current_user.folders.each do |folder| %>
       <li>
-        <%= link_to folder_path(folder), class: "#{request.path_info == "/folders/#{folder.id}" ? "text-green-400" : ""} flex items-center gap-2 px-6 py-2 rounded-sm hover:bg-gray-100 w-full" do %>
+        <%= link_to folder_path(folder), class: "#{request.path_info == "/folders/#{folder.id}" ? "text-green-400" : ""} flex items-center gap-2 px-6 py-2 rounded-sm hover:bg-gray-100 w-full text-sm" do %>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
             <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
           </svg>
