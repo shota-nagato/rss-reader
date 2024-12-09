@@ -1,11 +1,11 @@
 class FoldersController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_folder, only: %i[show destroy]
 
   def index
   end
 
   def show
-    @folder = current_user.folders.find(params[:id])
   end
 
   def new
@@ -27,9 +27,19 @@ class FoldersController < ApplicationController
     end
   end
 
+  def destroy
+    @folder.destroy!
+
+    redirect_to feeds_path, notice: "フォルダを削除しました。"
+  end
+
   private
 
   def folder_params
     params.require(:folder).permit(:name)
+  end
+
+  def set_folder
+    @folder = current_user.folders.find(params[:id])
   end
 end
