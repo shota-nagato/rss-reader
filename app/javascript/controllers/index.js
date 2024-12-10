@@ -3,6 +3,11 @@
 // ./bin/rails generate stimulus controllerName
 
 import { application } from "./application"
+import Dropdown from "@stimulus-components/dropdown"
+import Notification from "@stimulus-components/notification"
+
+application.register('dropdown', Dropdown)
+application.register('notification', Notification)
 
 import DebounceController from "./debounce_controller"
 application.register("debounce", DebounceController)
