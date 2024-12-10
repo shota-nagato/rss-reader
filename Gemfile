@@ -65,4 +65,6 @@ group :test do
 end
 
 gem "devise"
+gem "faraday"
+gem "feedjira"
 gem "view_component"

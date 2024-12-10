@@ -9,8 +9,14 @@ import Notification from "@stimulus-components/notification"
 application.register('dropdown', Dropdown)
 application.register('notification', Notification)
 
+import DebounceController from "./debounce_controller"
+application.register("debounce", DebounceController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import LoadingController from "./loading_controller"
+application.register("loading", LoadingController)
 
 import RemoveController from "./remove_controller"
 application.register("remove", RemoveController)
