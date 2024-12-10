@@ -8,5 +8,13 @@
 
   <div class="flex flex-col gap-2">
     <%= render(HeadingComponent.new(size: "h2", text: "カテゴリーから探す")) %>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <% Category.all.each do |category| %>
+        <%= link_to "#", class: "text-slate-500 text-sm p-4 border rounded-sm" do %>
+          #
+          <%= category.name %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
