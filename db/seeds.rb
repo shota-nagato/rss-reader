@@ -7,3 +7,8 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+category_names = ["web", "ビジネス", "テクノロジー", "経済", "政治・社会", "キャリア", "スタートアップ"]
+category_names.each do |category_name|
+  Category.find_or_create_by!(name: category_name)
+end
