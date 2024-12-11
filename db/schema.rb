@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_10_162619) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_11_142755) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,6 +26,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_10_162619) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "description"
+    t.string "rss_url", null: false
     t.index ["url"], name: "index_feeds_on_url", unique: true
   end
 

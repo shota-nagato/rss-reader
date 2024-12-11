@@ -1,6 +1,6 @@
 class Feed < ApplicationRecord
-  validates :title, :url, presence: true
-  validates :url, uniqueness: true
+  validates :title, :rss_url, :url, presence: true
+  validates :rss_url, :url, uniqueness: true
 
   def self.search(query)
     return [] if query.blank?
