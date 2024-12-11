@@ -35,10 +35,11 @@ class FeedsController < ApplicationController
 
     parsed_data = Feedjira.parse(response.body)
 
-    feed = Feed.find_or_initialize_by(url: params[:query])
+    feed = Feed.find_or_initialize_by(rss_url: params[:query])
     if feed.new_record?
+      feed.url = parsed_data.url
       feed.title = parsed_data.title
-      feed.description = data.description
+      feed.description = parsed_data.description
       feed.save!
     end
     feed
