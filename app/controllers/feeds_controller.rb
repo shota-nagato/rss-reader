@@ -2,7 +2,6 @@ class FeedsController < ApplicationController
   before_action :authenticate_user!
 
   def new
-    @feed = Feed.new
   end
 
   def search
