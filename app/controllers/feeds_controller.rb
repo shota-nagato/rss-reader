@@ -4,6 +4,15 @@ class FeedsController < ApplicationController
   def new
   end
 
+  def show
+    @feed = Feed.find(params[:id])
+
+    response = Faraday.get(@feed.rss_url)
+    rss = Feedjira.parse(response.body)
+    @entries = rss.entries
+    puts @entries
+  end
+
   def search
     if valid_url?(params[:query])
       feed = fetch_feed(params[:query])
