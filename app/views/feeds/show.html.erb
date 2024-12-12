@@ -1,6 +1,14 @@
 <div class="flex flex-col gap-8">
   <div class="flex flex-col gap-4">
-    <%= render(HeadingComponent.new(size: "h1", text: @feed.title)) %>
+    <div class="flex justify-between items-center">
+      <%= render(HeadingComponent.new(size: "h1", text: @feed.title)) %>
+      <div class="relative">
+        <div class="absolute top-8 right-0">
+          <%= turbo_frame_tag :select_folder %>
+        </div>
+        <%= render(ButtonComponent.new(text: "登録", variant: "outline", href: new_feed_feed_subscription_path(@feed), data: { turbo_frame: "select_folder" })) %>
+      </div>
+    </div>
     <p class="text-slate-600 text-sm"><%= @feed.description %></p>
   </div>
   <div class="flex flex-col gap-4">
@@ -24,7 +32,7 @@
       <% @entries.each do |entry| %>
         <%= link_to "#", class: "border rounded p-2 hover:bg-gray-100" do %>
           <div class="flex flex-col gap-2">
-            <%= image_tag entry.image, class: "rounded" %>
+            <%= image_tag entry.image, class: "rounded" if entry.image.present? %>
             <div class="font-bold text-sm">
               <%= truncate(entry.title, omission: "...", length: 40) %>
             </div>
