@@ -18,6 +18,8 @@
     <% end %>
   </div>
   <div>
-    aaa
+    <% @folder.feeds.each do |feed| %>
+      <%= feed.title %>
+    <% end %>
   </div>
 </div>

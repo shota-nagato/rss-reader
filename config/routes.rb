@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     collection do
       post :search
     end
+    resources :feed_subscriptions
   end
   resources :folders
 
