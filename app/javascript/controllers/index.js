@@ -6,8 +6,8 @@ import { application } from "./application"
 import Dropdown from "@stimulus-components/dropdown"
 import Notification from "@stimulus-components/notification"
 
-application.register('dropdown', Dropdown)
-application.register('notification', Notification)
+application.register("dropdown", Dropdown)
+application.register("notification", Notification)
 
 import DebounceController from "./debounce_controller"
 application.register("debounce", DebounceController)
@@ -26,3 +26,6 @@ application.register("sidebar", SidebarController)
 
 import SlideOverController from "./slide_over_controller"
 application.register("slide-over", SlideOverController)
+
+import ToggleController from "./toggle_controller"
+application.register("toggle", ToggleController)

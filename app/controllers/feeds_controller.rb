@@ -10,7 +10,6 @@ class FeedsController < ApplicationController
     response = Faraday.get(@feed.rss_url)
     rss = Feedjira.parse(response.body)
     @entries = rss.entries
-    puts @entries
   end
 
   def search

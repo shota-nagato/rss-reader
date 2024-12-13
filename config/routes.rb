@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     end
     resources :feed_subscriptions
   end
-  resources :folders
+  resources :folders do
+    resources :feeds, only: :show, module: :folders
+  end
 
   authenticated :user do
     root to: "dashboard#show", as: :user_root
