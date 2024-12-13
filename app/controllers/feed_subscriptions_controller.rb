@@ -20,15 +20,10 @@ class FeedSubscriptionsController < ApplicationController
     respond_to do |format|
       format.turbo_stream {
         render turbo_stream: [
-          turbo_stream.replace(
-            dom_id(@feed, folder.id),
-            partial: "feed_subscriptions/add_button", locals: {feed: @feed, folder: folder}
-          ),
+          turbo_stream.replace(dom_id(@feed, folder.id), partial: "feed_subscriptions/add_button", locals: {feed: @feed, folder: folder}),
+
           if folder.subscribe?(@feed)
-            turbo_stream.append(
-              dom_id(folder),
-              partial: "feeds/sidebar/feed", locals: {feed: @feed, folder: folder}
-            )
+            turbo_stream.append(dom_id(folder), partial: "feeds/sidebar/feed", locals: {feed: @feed, folder: folder})
           else
             turbo_stream.remove(dom_id(folder, @feed.id))
           end

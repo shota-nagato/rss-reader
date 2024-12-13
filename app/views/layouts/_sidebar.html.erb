@@ -28,22 +28,28 @@
       <% end %>
     </li>
     <% current_user.folders.each do |folder| %>
-      <li>
-        <%= link_to folder_path(folder), class: "#{request.path_info == "/folders/#{folder.id}" ? "text-green-400" : ""} flex items-center gap-2 px-6 py-2 rounded-sm hover:bg-gray-100 w-full text-sm" do %>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-          </svg>
-          <div class="font-bold"><%= folder.name %></div>
-        <% end %>
-
-        <div class="pl-12">
-          <% folder.feeds.each do |feed| %>
-            <%= render partial: "feeds/sidebar/feed", locals: { feed: feed, folder: folder } %>
+      <li data-controller="toggle">
+        <div class="flex items-center gap-2 hover:bg-gray-100 text-sm px-4 py-2">
+          <button data-action="click->toggle#toggle">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4" data-toggle-target="icon">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+            </svg>
+          </button>
+          <%= link_to folder_path(folder), class: class_names("w-full flex items-center justify-between", { "text-green-400": request.path_info == "/folders/#{folder.id}" }) do %>
+            <div class="font-bold"><%= folder.name %></div>
+            <div class="<%= request.path_info == "/folders/#{folder.id}" ? "text-green-400" : "text-slate-400" %> text-xs"><%= folder.feeds.size %></div>
+          <% end %>
+        </div>
+        <div class="pl-10 hidden" data-toggle-target="toggleable">
+          <%= turbo_frame_tag dom_id(folder) do %>
+            <% folder.feeds.order(created_at: :desc).each do |feed| %>
+                <%= render partial: "feeds/sidebar/feed", locals: { feed: feed, folder: folder } %>
+            <% end %>
           <% end %>
         </div>
       </li>
     <% end %>
-    <%= link_to new_folder_path, data: { turbo_frame: "slide-over", action: "click->sidebar#close" }, class: "px-6 flex items-center text-xs text-slate-400 gap-1" do %>
+    <%= link_to new_folder_path, data: { turbo_frame: "slide-over", action: "click->sidebar#close" }, class: "px-10 flex items-center text-xs text-slate-400 gap-1" do %>
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
         <path stroke-linecap="round" stroke-linejoin="round" d="M12 10.5v6m3-3H9m4.06-7.19-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
       </svg>
