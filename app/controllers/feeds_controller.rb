@@ -18,7 +18,7 @@ class FeedsController < ApplicationController
 
   def search
     if valid_url?(params[:query])
-      feed = fetch_feed(params[:query])
+      feed = fetch_and_save_feed(params[:query])
       feeds = feed.present? ? [feed] : []
     else
       feeds = Feed.search(params[:query])
@@ -41,7 +41,7 @@ class FeedsController < ApplicationController
     URI::DEFAULT_PARSER.make_regexp.match(query)
   end
 
-  def fetch_feed(url)
+  def fetch_and_save_feed(url)
     response = Faraday.get(url)
     return unless response.is_a?(Faraday::Response)
 
