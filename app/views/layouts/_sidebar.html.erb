@@ -42,7 +42,7 @@
         </div>
         <div class="pl-10 hidden" data-toggle-target="toggleable">
           <%= turbo_frame_tag dom_id(folder) do %>
-            <% folder.feeds.order(created_at: :desc).each do |feed| %>
+            <% folder.feeds.order(:created_at).each do |feed| %>
                 <%= render partial: "feeds/sidebar/feed", locals: { feed: feed, folder: folder } %>
             <% end %>
           <% end %>

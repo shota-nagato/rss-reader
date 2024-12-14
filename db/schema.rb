@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_14_003955) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_14_140019) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,7 +38,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_14_003955) do
     t.datetime "updated_at", null: false
     t.text "description"
     t.string "rss_url", null: false
-    t.index ["url"], name: "index_feeds_on_url", unique: true
+    t.index ["rss_url"], name: "index_feeds_on_rss_url", unique: true
   end
 
   create_table "folders", force: :cascade do |t|
@@ -58,6 +58,17 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_14_003955) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["feed_id"], name: "index_items_on_feed_id"
+  end
+
+  create_table "user_items", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
+    t.boolean "liked", default: false, null: false
+    t.boolean "archived", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_user_items_on_item_id"
+    t.index ["user_id"], name: "index_user_items_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -88,4 +99,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_14_003955) do
   add_foreign_key "feed_subscriptions", "users"
   add_foreign_key "folders", "users"
   add_foreign_key "items", "feeds"
+  add_foreign_key "user_items", "items"
+  add_foreign_key "user_items", "users"
 end

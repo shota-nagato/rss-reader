@@ -1,0 +1,28 @@
+<%= link_to item.url, target: "_blank", class: "border rounded p-2 hover:bg-gray-100" do %>
+  <div class="flex flex-col gap-2">
+    <%= image_tag item.image_url, class: "rounded" if item.image_url.present? %>
+    <div>
+      <div class="font-bold text-sm">
+        <%= truncate(item.title, omission: "...", length: 35) %>
+      </div>
+      <div class="text-[10px]">
+        <%= item.feed.title %>
+      </div>
+    </div>
+    <div class="flex justify-between items-center">
+      <div class="flex items-center gap-1 text-slate-600">
+        <%= icon "calendar" %>
+        <p class="text-xs"><%= l item.published_at, format: :long %></p>
+      </div>
+      <div class="flex items-center gap-2">
+        <button class="flex items-center gap-[2px]">
+          <%= icon "comment" %>
+          <span class="text-xs text-slate-600">1</span>
+        </button>
+        <button>
+          <%= icon "heart", css: "text-red-400" %>
+        </button>
+      </div>
+    </div>
+  </div>
+<% end %>

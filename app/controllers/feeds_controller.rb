@@ -24,6 +24,8 @@ class FeedsController < ApplicationController
       feeds = Feed.search(params[:query])
     end
 
+    sleep 1
+
     respond_to do |format|
       format.turbo_stream do
         if params[:query].blank?
@@ -53,6 +55,7 @@ class FeedsController < ApplicationController
       feed.title = parsed_data.title
       feed.description = parsed_data.description
       feed.save!
+      SaveItemsJob.perform_later(feed)
     end
     feed
   rescue Faraday::ConnectionFailed
