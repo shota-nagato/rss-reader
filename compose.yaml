@@ -17,7 +17,6 @@ services:
       PGUSER: postgres
       PGPASSWORD: password
       PORT: 3000
-      REDIS_URL: redis://redis:6379
     volumes:
       - .:/myapp
     ports:
@@ -26,14 +25,6 @@ services:
     tty: true
     depends_on:
       - postgres
-      - redis
-  redis:
-    image: redis:latest
-    ports:
-      - 6379:6379
-    volumes:
-      - redis:/data
 
 volumes:
   postgres:
-  redis:

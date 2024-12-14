@@ -8,4 +8,9 @@
       <%= feed.title %>
     <% end %>
   </div>
+  <% cache("home_index_time") do %>
+   <p>
+     <%= Time.now %>
+   </p>
+ <% end %>
 </div>
