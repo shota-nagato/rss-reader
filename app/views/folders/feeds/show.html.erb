@@ -1,54 +1,35 @@
-<div class="flex flex-col gap-4">
+<div data-controller="loading" class="flex flex-col gap-4">
   <div class="flex justify-between items-center">
     <%= render(HeadingComponent.new(size: "h1", text: @feed.title)) %>
-    <%= render "shared/dropdown" do %>
-      <%= link_to "#", class: "flex items-center gap-1 py-2 px-4 hover:opacity-80" do %>
-        <%= icon "pencil" %>
-        <span class="text-sm">編集</span>
+    <div class="flex items-center gap-4">
+      <%= form_with url: feed_update_path(@feed), method: :patch, data: { action: "turbo:submit-start->loading#displayLoading turbo:submit-end->loading#displayContent" } do %>
+        <%= button_tag type: "submit" do %>
+          <%= icon "arrow-path", css: "size-5" %>
+        <% end %>
       <% end %>
-      <hr class="bg-gray-200 my-1">
-      <%= button_to "#", class: "flex items-center gap-1 text-red-400 py-2 px-4 hover:opacity-80" do %>
-        <%= icon "trash" %>
-        <span class="text-sm">削除</span>
+      <%= render "shared/dropdown" do %>
+        <%= link_to "#", class: "flex items-center gap-1 py-2 px-4 hover:opacity-80" do %>
+          <%= icon "pencil" %>
+          <span class="text-sm">編集</span>
+        <% end %>
+        <hr class="bg-gray-200 my-1">
+        <%= button_to "#", class: "flex items-center gap-1 text-red-400 py-2 px-4 hover:opacity-80" do %>
+          <%= icon "trash" %>
+          <span class="text-sm">削除</span>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
   <div>
     <div class="flex items-center gap-4 text-sm text-slate-600 mb-2">
       <div class="font-bold">全ての記事</div>
       <div class="">お気に入り</div>
     </div>
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-      <% @feed.items.each do |item| %>
-        <%= link_to item.url, target: "_blank", class: "border rounded p-2 hover:bg-gray-100" do %>
-          <div class="flex flex-col gap-2">
-            <%= image_tag item.image_url, class: "rounded" if item.image_url.present? %>
-            <div>
-              <div class="font-bold text-sm">
-                <%= truncate(item.title, omission: "...", length: 35) %>
-              </div>
-              <div class="text-[10px]">
-                <%= item.feed.title %>
-              </div>
-            </div>
-            <div class="flex justify-between items-center">
-              <div class="flex items-center gap-1 text-slate-600">
-                <%= icon "calendar" %>
-                <p class="text-xs"><%= l item.published_at, format: :long %></p>
-              </div>
-              <div class="flex items-center gap-2">
-                <button class="flex items-center gap-[2px]">
-                  <%= icon "comment" %>
-                  <span class="text-xs text-slate-600">1</span>
-                </button>
-                <button>
-                  <%= icon "heart" %>
-                </button>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
+    <div data-loading-target="loading" class="hidden mt-4">
+      <%= render(LoadingComponent.new) %>
     </div>
+    <%= turbo_frame_tag :items, class: "grid md:grid-cols-2 lg:grid-cols-4 gap-4", data: { loading_target: "content" } do %>
+      <%= render partial: "folders/feeds/item", collection: @items, as: :item %>
+    <% end %>
   </div>
 </div>

@@ -3,13 +3,11 @@
     <%= render(HeadingComponent.new(size: "h1", text: "キーワード、フィードのURLで検索")) %>
     <%= form_with url: search_feeds_path, method: :post, html: { class: "relative" }, data: { turbo_frame: :feed, controller: "debounce loading", debounce_target: "form", action: "turbo:submit-start->loading#displayLoading turbo:submit-end->loading#displayContent" } do |form| %>
       <%= render(FormFieldComponent.new(form: form, attribute_key: :query, placeholder: "キーワード、フィードのURL", data: { action: "input->debounce#search" })) %>
-      <div data-loading-target="loading" class="hidden flex justify-center items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 animate-spin">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
-        </svg>
+      <div data-loading-target="loading" class="hidden">
+        <%= render(LoadingComponent.new) %>
       </div>
       <div class="absolute top-11 w-full">
-        <%= turbo_frame_tag :search_result %>
+        <%= turbo_frame_tag :search_result, data: { loading_target: "content" } %>
       </div>
     <% end %>
   </div>
