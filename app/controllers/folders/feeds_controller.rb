@@ -4,6 +4,7 @@ class Folders::FeedsController < ApplicationController
 
   def show
     @feed = @folder.feeds.find(params[:id])
+    SaveItemsJob.perform_later(@feed)
   end
 
   private
