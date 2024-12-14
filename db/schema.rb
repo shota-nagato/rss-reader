@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_12_144048) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_14_003955) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -49,6 +49,17 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_12_144048) do
     t.index ["user_id"], name: "index_folders_on_user_id"
   end
 
+  create_table "items", force: :cascade do |t|
+    t.bigint "feed_id", null: false
+    t.string "title", null: false
+    t.string "url", null: false
+    t.string "image_url"
+    t.datetime "published_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["feed_id"], name: "index_items_on_feed_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -76,4 +87,5 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_12_144048) do
   add_foreign_key "feed_subscriptions", "folders"
   add_foreign_key "feed_subscriptions", "users"
   add_foreign_key "folders", "users"
+  add_foreign_key "items", "feeds"
 end

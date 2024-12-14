@@ -4,6 +4,7 @@ class Feed < ApplicationRecord
 
   has_many :feed_subscriptions, dependent: :destroy
   has_many :holders, through: :feed_subscriptions
+  has_many :items, dependent: :destroy
 
   def self.search(query)
     return [] if query.blank?
