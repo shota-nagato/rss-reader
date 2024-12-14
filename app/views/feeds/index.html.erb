@@ -4,6 +4,8 @@
     <%= render(ButtonComponent.new(text: "追加する", href: new_feed_path)) %>
   </div>
   <div>
-    aaa
+    <% @feeds.each do |feed| %>
+      <%= feed.title %>
+    <% end %>
   </div>
 </div>
