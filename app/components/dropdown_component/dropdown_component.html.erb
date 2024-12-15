@@ -1,0 +1,14 @@
+<div class="relative" data-controller="dropdown">
+  <button data-action="dropdown#toggle click@window->dropdown#hide">
+    <%= icon "ellipsis-horizontal" %>
+  </button>
+  <div
+    data-dropdown-target="menu"
+    class="hidden transition transform origin-top-right absolute right-0 bg-white shadow rounded min-w-24"
+    data-transition-enter-from="opacity-0 scale-95"
+    data-transition-enter-to="opacity-100 scale-100"
+    data-transition-leave-from="opacity-100 scale-100"
+    data-transition-leave-to="opacity-0 scale-95">
+    <%= content %>
+  </div>
+</div>

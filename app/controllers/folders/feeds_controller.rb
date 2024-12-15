@@ -7,10 +7,8 @@ class Folders::FeedsController < ApplicationController
     @items = Item.user_feed_items(@feed, current_user)
 
     # 購読直後は記事が0なので初めてfeed詳細遷移するタイミングで保存
-    if @items.count.zero?
-      @feed.update_user_items(current_user)
+    @feed.update_user_items(current_user) if @items.count.zero?
     end
-  end
 
   private
 
