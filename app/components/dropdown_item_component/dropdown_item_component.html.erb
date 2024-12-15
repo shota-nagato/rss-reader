@@ -1,0 +1,7 @@
+<%= link_to @href, data: @data, class: class_names("flex items-center gap-1 text-gray-600 py-2 px-4 hover:opacity-80", @css) do %>
+  <%= icon @icon %>
+  <span class="text-sm"><%= @text %></span>
+<% end %>
+<% if @underline %>
+  <hr class="bg-gray-200 my-1">
+<% end %>
