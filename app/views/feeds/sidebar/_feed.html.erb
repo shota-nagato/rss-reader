@@ -1,5 +1,5 @@
 <%= turbo_frame_tag dom_id(folder, feed.id) do %>
-  <%= link_to folder_feed_path(folder, feed), data: { turbo: false }, class: "block text-xs py-1 px-2 rounded hover:bg-gray-100" do %>
+  <%= link_to folder_feed_path(folder, feed), data: { turbo: false }, class: "block text-xs py-1 px-2 rounded hover:bg-gray-100 #{request.path_info == "/folders/#{folder.id}/feeds/#{feed.id}" ? "text-green-400" : "text-slate-600"}" do %>
     <%= truncate(feed.title, omission: "...", length: 16) %>
   <% end %>
 <% end %>

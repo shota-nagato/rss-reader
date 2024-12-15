@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
   resources :folders do
     resources :feeds, only: :show, module: :folders
+    resource :toggle, only: :update, module: :folders
   end
 
   authenticated :user do

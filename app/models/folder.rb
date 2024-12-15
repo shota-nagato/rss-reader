@@ -4,6 +4,8 @@ class Folder < ApplicationRecord
   has_many :feed_subscriptions, dependent: :destroy
   has_many :feeds, through: :feed_subscriptions
 
+  store_accessor :options, :toggle
+
   validates :name, presence: true
 
   def subscribe?(feed)
