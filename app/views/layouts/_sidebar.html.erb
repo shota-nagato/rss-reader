@@ -28,7 +28,7 @@
       <% end %>
     </li>
     <% current_user.folders.order(:created_at).each do |folder| %>
-      <li data-controller="toggle" data-toggle-toggleable-value="<%= folder.class.name.underscore.pluralize %>"  data-toggle-toggleable-id-value="<%= folder.id %>">
+      <li data-controller="toggle" data-toggle-toggleable-value="<%= folder.class.name.underscore.pluralize %>" data-toggle-toggleable-id-value="<%= folder.id %>">
         <div class="flex items-center gap-2 hover:bg-gray-100 text-sm px-4 py-2">
           <button data-action="click->toggle#toggle">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="<%= "size-4 #{folder.toggle ? "rotate-90" : ""}" %>" data-toggle-target="icon">
