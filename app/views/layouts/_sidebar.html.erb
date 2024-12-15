@@ -27,11 +27,11 @@
         <div class="font-bold">ALL</div>
       <% end %>
     </li>
-    <% current_user.folders.each do |folder| %>
-      <li data-controller="toggle">
+    <% current_user.folders.order(:created_at).each do |folder| %>
+      <li data-controller="toggle" data-toggle-toggleable-value="<%= folder.class.name.underscore.pluralize %>"  data-toggle-toggleable-id-value="<%= folder.id %>">
         <div class="flex items-center gap-2 hover:bg-gray-100 text-sm px-4 py-2">
           <button data-action="click->toggle#toggle">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4" data-toggle-target="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="<%= "size-4 #{folder.toggle ? "rotate-90" : ""}" %>" data-toggle-target="icon">
               <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
             </svg>
           </button>
@@ -40,7 +40,7 @@
             <div class="<%= request.path_info == "/folders/#{folder.id}" ? "text-green-400" : "text-slate-400" %> text-xs"><%= folder.feeds.size %></div>
           <% end %>
         </div>
-        <div class="pl-10 hidden" data-toggle-target="toggleable">
+        <div class="<%= "pl-10 #{folder.toggle ? "" : "hidden"}" %>" data-toggle-target="toggleable">
           <%= turbo_frame_tag dom_id(folder) do %>
             <% folder.feeds.order(:created_at).each do |feed| %>
                 <%= render partial: "feeds/sidebar/feed", locals: { feed: feed, folder: folder } %>
