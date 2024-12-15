@@ -19,8 +19,6 @@
     <% end %>
   </div>
   <div>
-    <% @folder.feeds.each do |feed| %>
-      <%= feed.title %>
-    <% end %>
+    <%= render partial: "items/item", collection: @items, as: :item %>
   </div>
 </div>

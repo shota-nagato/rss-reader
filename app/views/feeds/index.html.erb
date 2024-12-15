@@ -4,13 +4,6 @@
     <%= render(ButtonComponent.new(text: "追加する", href: new_feed_path)) %>
   </div>
   <div>
-    <% @feeds.each do |feed| %>
-      <%= feed.title %>
-    <% end %>
+    <%= render partial: "items/item", collection: @items, as: :item %>
   </div>
-  <% cache("home_index_time") do %>
-   <p>
-     <%= Time.now %>
-   </p>
- <% end %>
 </div>

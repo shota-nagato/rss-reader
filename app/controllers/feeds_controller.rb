@@ -2,7 +2,7 @@ class FeedsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @feeds = current_user.feeds.distinct.order(created_at: :desc)
+    @items = current_user.items.distinct.order(published_at: :desc)
   end
 
   def new
