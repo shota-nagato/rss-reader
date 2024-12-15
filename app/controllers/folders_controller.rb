@@ -6,6 +6,7 @@ class FoldersController < ApplicationController
   end
 
   def show
+    @items = Item.user_folder_items(@folder, current_user).order(published_at: :desc)
   end
 
   def new

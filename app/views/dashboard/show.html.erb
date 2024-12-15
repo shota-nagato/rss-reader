@@ -1,2 +1,6 @@
-<h1>Dashboard#show</h1>
-<p>Find me in app/views/dashboard/show.html.erb</p>
+<div class="flex flex-col gap-4">
+  <%= render HeadingComponent.new(size: "h1", text: "本日の記事") %>
+  <div>
+    <%= render partial: "items/item", collection: @items, as: :item %>
+  </div>
+</div>
