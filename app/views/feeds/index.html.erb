@@ -3,7 +3,13 @@
     <%= render(HeadingComponent.new(size: "h1", text: "全てのフィード")) %>
     <%= render(ButtonComponent.new(text: "追加する", href: new_feed_path)) %>
   </div>
-  <div>
-    <%= render partial: "items/item", collection: @items, as: :item %>
+  <div class="flex justify-between items-center">
+    <div></div>
+    <%= form_with url: search_items_path(type: "list"), method: :post, data: { controller: "debounce", debounce_target: "form" } do |form| %>
+      <%= render FormFieldComponent.new(form: form, attribute_key: :query, data: { action: "input->debounce#search" }, placeholder: "キーワード", size: "sm") %>
+    <% end %>
   </div>
+  <%= turbo_frame_tag :items do %>
+    <%= render partial: "items/item", collection: @items, as: :item, locals: { type: "list" } %>
+  <% end %>
 </div>
