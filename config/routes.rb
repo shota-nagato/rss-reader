@@ -8,9 +8,16 @@ Rails.application.routes.draw do
     resource :update, only: :update, module: :feeds
     resources :feed_subscriptions
   end
+
   resources :folders do
     resources :feeds, only: :show, module: :folders
     resource :toggle, only: :update, module: :folders
+  end
+
+  resources :items do
+    collection do
+      post :search
+    end
   end
 
   authenticated :user do

@@ -11,7 +11,7 @@ class Feeds::UpdatesController < ApplicationController
 
     respond_to do |format|
       format.turbo_stream do
-        render turbo_stream: turbo_stream.update(:items, partial: "folders/feeds/item", collection: feed.items, as: :item)
+        render turbo_stream: turbo_stream.update(:items, partial: "items/item", collection: feed.items, as: :item, locals: {type: "card"})
       end
     end
   end
