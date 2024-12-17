@@ -29,3 +29,6 @@ application.register("slide-over", SlideOverController)
 
 import ToggleController from "./toggle_controller"
 application.register("toggle", ToggleController)
+
+import ChangeViewController from "./change_view_controller"
+application.register("change-view", ChangeViewController)

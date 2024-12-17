@@ -2,16 +2,9 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_folder
   before_action :set_feed
+  before_action :set_items
 
   def search
-    @items = if @folder.present?
-      Item.user_folder_items(@folder, current_user).by_keyword(params[:query])
-    elsif @feed.present?
-      Item.user_feed_items(@feed, current_user).by_keyword(params[:query])
-    else
-      @items = current_user.items.by_keyword(params[:query])
-    end
-
     respond_to do |format|
       format.turbo_stream do
         if @items.count.zero?
@@ -19,6 +12,16 @@ class ItemsController < ApplicationController
         else
           render turbo_stream: turbo_stream.update(:items, partial: "items/item", collection: @items, as: :item, locals: {type: params[:type]})
         end
+      end
+    end
+  end
+
+  def change_view
+    session[:type] = params[:type]
+
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.update(:items, partial: "items/item", collection: @items, as: :item, locals: {type: params[:type]})
       end
     end
   end
@@ -31,5 +34,21 @@ class ItemsController < ApplicationController
 
   def set_feed
     @feed = current_user.feeds.find(params[:feed_id]) if params[:feed_id].present?
+  end
+
+  def set_items
+    items = if @folder.present?
+      Item.user_folder_items(@folder, current_user)
+    elsif @feed.present?
+      Item.user_feed_items(@feed, current_user)
+    else
+      current_user.items
+    end
+
+    @items = if params[:query].present?
+      items.by_keyword(params[:query]).order(published_at: :desc)
+    else
+      items.order(published_at: :desc)
+    end
   end
 end

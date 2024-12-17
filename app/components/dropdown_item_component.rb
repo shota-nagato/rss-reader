@@ -3,7 +3,7 @@
 class DropdownItemComponent < ViewComponent::Base
   include IconHelper
 
-  def initialize(href:, data:, icon:, text:, underline: false, css: "")
+  def initialize(href:, icon:, text:, data: {}, underline: false, css: "")
     @href = href
     @data = data
     @icon = icon

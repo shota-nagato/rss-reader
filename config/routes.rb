@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :items do
     collection do
       post :search
+      post :change_view
     end
   end
 
