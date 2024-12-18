@@ -32,7 +32,7 @@
   <div>
     <div class="flex flex-col md:flex-row md:justify-between md:items-end mb-4">
       <div class="flex items-center gap-4 text-sm text-slate-600 mb-2 md:mb-0">
-        <div class="font-bold">全ての記事</div>
+        <div class="font-bold">全て</div>
         <div class="">お気に入り</div>
       </div>
       <%= form_with url: search_items_path(feed_id: @feed.id, type: "card"), method: :post, data: { controller: "debounce", debounce_target: "form" } do |form| %>

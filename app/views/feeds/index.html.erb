@@ -1,10 +1,13 @@
 <div class="flex flex-col gap-4">
   <div class="flex justify-between items-center">
-    <%= render(HeadingComponent.new(size: "h1", text: "全てのフィード")) %>
+    <%= render(HeadingComponent.new(size: "h1", text: "全ての記事")) %>
     <%= render(ButtonComponent.new(text: "追加する", href: new_feed_path)) %>
   </div>
   <div class="flex justify-between items-center">
-    <div></div>
+    <div class="flex items-center gap-4 text-sm text-slate-600 mb-2 md:mb-0">
+      <div class="font-bold">全て</div>
+      <div class="">お気に入り</div>
+    </div>
     <%= form_with url: search_items_path(type: "list"), method: :post, data: { controller: "debounce", debounce_target: "form" } do |form| %>
       <%= render FormFieldComponent.new(form: form, attribute_key: :query, data: { action: "input->debounce#search" }, placeholder: "キーワード", size: "sm") %>
     <% end %>

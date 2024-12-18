@@ -18,13 +18,25 @@
       ) %>
     <% end %>
   </div>
-  <div class="flex justify-between items-center">
-    <div></div>
-    <%= form_with url: search_items_path(folder_id: @folder.id, type: "list"), method: :post, data: { controller: "debounce", debounce_target: "form" } do |form| %>
-      <%= render FormFieldComponent.new(form: form, attribute_key: :query, data: { action: "input->debounce#search" }, placeholder: "キーワード", size: "sm") %>
-    <% end %>
-  </div>
+  <% unless @items.count.zero? %>
+    <div class="flex justify-between items-center">
+      <div class="flex items-center gap-4 text-sm text-slate-600 mb-2 md:mb-0">
+        <div class="font-bold">全て</div>
+        <div class="">お気に入り</div>
+      </div>
+      <%= form_with url: search_items_path(folder_id: @folder.id, type: "list"), method: :post, data: { controller: "debounce", debounce_target: "form" } do |form| %>
+        <%= render FormFieldComponent.new(form: form, attribute_key: :query, data: { action: "input->debounce#search" }, placeholder: "キーワード", size: "sm") %>
+      <% end %>
+    </div>
+  <% end %>
   <%= turbo_frame_tag :items do %>
-    <%= render partial: "items/item", collection: @items, as: :item, locals: { type: "list" } %>
+    <% if @folder.feeds.count.zero? %>
+      <div class="flex items-center justify-between">
+        <div class="text-sm text-slate-600">登録しているフィードはありません。</div>
+        <%= render(ButtonComponent.new(text: "登録する", href: new_feed_path, data: { turbo: false })) %>
+      </div>
+    <% else %>
+      <%= render partial: "items/item", collection: @items, as: :item, locals: { type: "list" } %>
+    <% end %>
   <% end %>
 </div>
