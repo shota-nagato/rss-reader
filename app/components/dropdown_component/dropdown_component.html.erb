@@ -1,10 +1,10 @@
-<div class="relative" data-controller="dropdown">
+<div class="relative h-6 w-6" data-controller="dropdown">
   <button data-action="dropdown#toggle click@window->dropdown#hide">
-    <%= icon @icon %>
+    <%= icon @icon, css: "z-0" %>
   </button>
   <div
     data-dropdown-target="menu"
-    class="hidden transition transform origin-top-right absolute right-0 bg-white shadow rounded min-w-24"
+    class="hidden transition transform origin-top-right absolute right-0 bg-white shadow rounded min-w-24 z-40"
     data-transition-enter-from="opacity-0 scale-95"
     data-transition-enter-to="opacity-100 scale-100"
     data-transition-leave-from="opacity-100 scale-100"

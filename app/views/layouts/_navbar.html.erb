@@ -1,16 +1,15 @@
 <nav class="sticky top-0 z-0 w-full bg-white shadow mb-4">
-  <div class="flex items-center justify-between p-4">
-    <div>
-      <button class="md:hidden" data-controller="sidebar" data-action="sidebar#open">
-        <div class="hover:cursor-pointer text-gray-500 hover:text-gray-800">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-          </svg>
-        </div>
-      </button>
-    </div>
+  <div class="flex items-center justify-between md:justify-end py-4 px-8">
+    <button class="md:hidden" data-controller="sidebar" data-action="sidebar#open">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </svg>
+    </button>
     <div class="flex items-center gap-4">
       <div class="flex items-center gap-2">
+<%
+=begin
+%>
         <div class="relative" data-controller="dropdown">
           <button class="flex items-center gap-1" data-action="dropdown#toggle click@window->dropdown#hide">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
@@ -27,9 +26,6 @@
             data-transition-enter-to="opacity-100 scale-100"
             data-transition-leave-from="opacity-100 scale-100"
             data-transition-leave-to="opacity-0 scale-95">
-<%
-=begin
-%>
             <% if current_user.notifications.size.zero? %>
               <div class="text-sm text-slate-500">通知はありません。</div>
             <% else %>
@@ -49,67 +45,18 @@
                 <%= link_to "全て見る", notifications_path %>
               </div>
             <% end %>
+          </div>
+        </div>
 <%
 =end
 %>
-          </div>
-        </div>
       </div>
-      <div class="flex items-center gap-2">
-        <div class="relative" data-controller="dropdown">
-          <button class="flex items-center gap-1" data-action="dropdown#toggle click@window->dropdown#hide">
-            <%#= image_tag avatar_url_for(current_user), class: "shadow rounded-full w-10 h-10" %>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-            </svg>
-          </button>
-          <div
-            data-dropdown-target="menu"
-            class="hidden transition transform origin-top-right absolute right-0 bg-white shadow py-2 px-4 rounded min-w-44"
-            data-transition-enter-from="opacity-0 scale-95"
-            data-transition-enter-to="opacity-100 scale-100"
-            data-transition-leave-from="opacity-100 scale-100"
-            data-transition-leave-to="opacity-0 scale-95">
-            <div class="flex flex-col">
-              <div class="text-xs">
-                <div class="font-bold">
-                  <%= current_user.name %>
-                </div>
-                <div class="text-slate-500">
-                  <%= current_user.email %>
-                </div>
-              </div>
-            </div>
-            <hr class="bg-slate-300 my-2">
-            <ul>
-              <li class="py-1">
-                <%= link_to edit_user_registration_path, class: "text-sm text-slate-500 flex items-center gap-2" do %>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-                  </svg>
-                  <div>プロフィール</div>
-                <% end %>
-              </li>
-              <li class="py-1">
-                <%= link_to "#", class: "text-sm text-slate-500 flex items-center gap-2" do %>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
-                  </svg>
-                  <div>パスワード</div>
-                <% end %>
-              </li>
-            </ul>
-
-            <hr class="bg-slate-300 my-2">
-            <%= button_to destroy_user_session_path, method: :delete, class: "text-sm text-slate-500 flex items-center gap-2" do %>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
-              </svg>
-              <div>ログアウト</div>
-            <% end %>
-          </div>
-        </div>
-      </div>
+      <%= render DropdownComponent.new(icon: "user-circle", css: "z-10") do %>
+        <%= render DropdownItemComponent.new(href: "#", text: current_user.email, underline: true) %>
+        <%= render DropdownItemComponent.new(href: edit_user_registration_path, icon: "user", text: "プロフィール") %>
+        <%= render DropdownItemComponent.new(href: "#", icon: "lock-closed", text: "パスワード", underline: true) %>
+        <%= render DropdownItemComponent.new(href: destroy_user_session_path, data: { turbo_method: :delete }, icon: "arrow-right-start-on-rectangle", text: "ログアウト") %>
+      <% end %>
     </div>
   </div>
 </nav>
