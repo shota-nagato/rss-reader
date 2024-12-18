@@ -1,5 +1,5 @@
 <%= link_to @href, data: @data, class: class_names("flex items-center gap-1 text-gray-600 py-2 px-4 hover:opacity-80", @css) do %>
-  <%= icon @icon %>
+  <%= icon @icon if @icon.present? %>
   <div class="text-sm whitespace-nowrap"><%= @text %></div>
 <% end %>
 <% if @underline %>
