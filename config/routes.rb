@@ -21,6 +21,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :user_items do
+    resource :like, only: :update, module: :user_items
+  end
+
   authenticated :user do
     root to: "dashboard#show", as: :user_root
   end

@@ -9,7 +9,7 @@
     RSS Reader
   </div>
 
-  <ul class="flex flex-col gap-2 mb-8">
+  <ul class="flex flex-col gap-2 mb-4">
     <li>
       <%= link_to user_root_path, class: "#{controller.controller_path == "dashboard" ? "text-green-400" : ""} flex items-center gap-2 px-4 py-2 rounded-sm hover:bg-gray-100 w-full" do %>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -17,13 +17,26 @@
         </svg>
         <div class="font-bold">TODAY</div>
       <% end %>
+    </li>
+    <li>
+      <%= link_to user_root_path, class: "#{controller.controller_path == "dashboard" ? "text-green-400" : ""} flex items-center gap-2 px-4 py-2 rounded-sm hover:bg-gray-100 w-full" do %>
+        <%= icon "bookmark" %>
+        <div class="font-bold">READ LATER</div>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to user_root_path, class: "#{controller.controller_path == "dashboard" ? "text-green-400" : ""} flex items-center gap-2 px-4 py-2 rounded-sm hover:bg-gray-100 w-full" do %>
+        <%= icon "star" %>
+        <div class="font-bold">LIKE</div>
+      <% end %>
+    </li>
   </ul>
+
   <div class="text-sm text-slate-500 mb-2 px-4">FEEDS</div>
   <ul class="flex flex-col gap-2 mb-8" data-controller="sidebar">
+    <li>
       <%= link_to feeds_path, class: "#{controller.controller_path == "feeds" ? "text-green-400" : ""} flex items-center gap-2 px-4 py-2 rounded-sm hover:bg-gray-100 w-full" do %>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12.75 19.5v-.75a7.5 7.5 0 0 0-7.5-7.5H4.5m0-6.75h.75c7.87 0 14.25 6.38 14.25 14.25v.75M6 18.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
-        </svg>
+        <%= icon "rss" %>
         <div class="font-bold">ALL</div>
       <% end %>
     </li>
@@ -53,18 +66,6 @@
       <%= icon "folder-plus", css: "w-4" %>
       <div class="">フォルダを追加</div>
     <% end %>
-  </ul>
-
-  <div class="text-sm text-slate-500 mb-2 px-4">SUPPORT</div>
-  <ul>
-    <li>
-      <%= link_to "#", class: "flex items-center gap-2 px-4 py-2 rounded-sm hover:bg-gray-100 w-full" do %>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
-        </svg>
-        <div class="font-bold">ガイドライン</div>
-      <% end %>
-    </li>
   </ul>
 </div>
 

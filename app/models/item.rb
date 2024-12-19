@@ -10,4 +10,8 @@ class Item < ApplicationRecord
   scope :user_feed_items, ->(feed, user) { eager_load(:user_items).where(feed: feed, user_items: {user_id: user.id}) }
   scope :user_folder_items, ->(folder, user) { eager_load(:user_items).where(feed: folder.feeds, user_items: {user_id: user.id}) }
   scope :by_keyword, ->(keyword) { where(arel_table[:title].matches("%#{sanitize_sql_like(keyword)}%")) }
+
+  def user_item(user)
+    user_items.find_by(user: user)
+  end
 end

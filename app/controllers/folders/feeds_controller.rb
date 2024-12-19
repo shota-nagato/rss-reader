@@ -5,6 +5,7 @@ class Folders::FeedsController < ApplicationController
   def show
     @feed = @folder.feeds.find(params[:id])
     @items = Item.user_feed_items(@feed, current_user).order(published_at: :desc)
+    @items = @items.eager_load(:user_items).where(user_items: {user: current_user, liked: true}) if params[:liked].present?
 
     # 購読直後は記事が0なので初めてfeed詳細遷移するタイミングで保存
     @feed.update_user_items(current_user) if @items.count.zero?

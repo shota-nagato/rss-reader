@@ -1,5 +1,5 @@
-<%= link_to item.url, target: "_blank" do %>
-  <% if type == "list" %>
+<% if type == "list" %>
+  <%= link_to item.url do %>
     <div class="flex flex-col gap-1">
       <div class="font-bold text-sm">
         <%= item.feed.title %>
@@ -15,9 +15,11 @@
     </div>
     <hr class="bg-gray-200 my-2">
   <% end %>
+<% end %>
 
-  <% if type == "card" %>
-    <div class="border rounded p-2 hover:bg-gray-100">
+<% if type == "card" %>
+  <div class="relative border rounded p-2 hover:bg-gray-100">
+    <%= link_to item.url do %>
       <div class="flex flex-col gap-2">
         <%= image_tag item.image_url, class: "rounded" if item.image_url.present? %>
         <div>
@@ -30,17 +32,24 @@
         </div>
         <div class="flex justify-between items-center">
           <div class="flex items-center gap-1 text-slate-600">
-            <%= icon "calendar" %>
-            <p class="text-xs"><%= l item.published_at, format: :long %></p>
-          </div>
-          <div class="flex items-center gap-2">
-            <button class="flex items-center gap-[2px]">
+            <div class="flex items-center gap-1 text-slate-600">
+              <%= icon "calendar" %>
+              <p class="text-xs"><%= l item.published_at, format: :long %></p>
+            </div>
+            <div class="flex items-center gap-1 text-slate-600">
               <%= icon "comment" %>
               <span class="text-xs text-slate-600">1</span>
-            </button>
+            </div>
           </div>
         </div>
       </div>
+    <% end %>
+    <div class="absolute bottom-1 right-1 flex items-center gap-1">
+      <%= link_to "#", class: "hover:bg-gray-200 block" do %>
+        <%= icon "bookmark", css: "text-slate-600" %>
+      <% end %>
+
+      <%= render "user_items/like", user_item: item.user_item(current_user) %>
     </div>
-  <% end %>
+  </div>
 <% end %>
