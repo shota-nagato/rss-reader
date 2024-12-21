@@ -24,7 +24,7 @@
         <div id="flash">
           <%= render "shared/flash", flash: flash %>
         </div>
-        <main class="px-8">
+        <main class="<%= class_names("px-8": user_signed_in?) %>">
           <%= yield %>
         </main>
       </div>
