@@ -5,23 +5,15 @@
       <p class="text-xs text-slate-800"><%= @feed.description %></p>
     </div>
     <div class="flex items-center gap-4">
-      <div class="relative z-0">
-        <%= render DropdownComponent.new(icon: "list-bullet") do %>
-          <%= render DropdownItemComponent.new(
-            href: change_view_items_path(feed_id: @feed.id, type: "list", filter: request.query_parameters),
-            data: { turbo_method: :post, controller: "change-view", change_view_type_value: "list", action: "click->change-view#changeView" },
-            icon: "list-bullet",
-            text: "リスト表示"
-          ) %>
-          <%= render DropdownItemComponent.new(
-            href: change_view_items_path(feed_id: @feed.id, type: "card", filter: request.query_parameters),
-            data: { turbo_method: :post, controller: "change-view", change_view_type_value: "card", action: "click->change-view#changeView" },
-            icon: "squares",
-            text: "カード表示"
-          ) %>
+      <div class="flex">
+        <%= link_to folder_feed_path(@folder, @feed, request.query_parameters.merge(type: "card")), class: class_names("border", "text-green-400 border-green-400": request.query_parameters[:type] != "list") do %>
+          <%= icon "squares" %>
+        <% end %>
+        <%= link_to folder_feed_path(@folder, @feed, request.query_parameters.merge(type: "list")), class: class_names("border", "text-green-400 border-green-400": request.query_parameters[:type] == "list") do %>
+          <%= icon "list-bullet" %>
         <% end %>
       </div>
-      <%= form_with url: feed_update_path(@feed), method: :patch, class: "w-6 h-6", data: { action: "turbo:submit-start->loading#displayLoading turbo:submit-end->loading#displayContent" } do %>
+      <%= form_with url: feed_update_path(@feed, type: request.query_parameters[:type], liked: request.query_parameters[:liked]), method: :patch, class: "w-6 h-6", data: { action: "turbo:submit-start->loading#displayLoading turbo:submit-end->loading#displayContent" } do %>
         <%= button_tag type: "submit" do %>
           <%= icon "arrow-path" %>
         <% end %>
@@ -35,18 +27,18 @@
   <div>
     <div class="flex flex-col md:flex-row md:justify-between md:items-end mb-4">
       <div class="flex items-center gap-4 text-sm text-slate-600 mb-2 md:mb-0">
-        <%= link_to "全て", folder_feed_path(@folder, @feed), class: class_names("font-bold text-green-400": request.query_string.blank?) %>
-        <%= link_to "お気に入り", folder_feed_path(@folder, @feed, liked: true), class: class_names("font-bold text-green-400": request.query_string.present?) %>
+        <%= link_to "全て", folder_feed_path(@folder, @feed, type: request.query_parameters[:type]), class: class_names("font-bold text-green-400": request.query_parameters[:liked].blank?) %>
+        <%= link_to "お気に入り", folder_feed_path(@folder, @feed, request.query_parameters.merge(liked: true)), class: class_names("font-bold text-green-400": request.query_parameters[:liked].present?) %>
       </div>
-      <%= form_with url: search_items_path(feed_id: @feed.id, type: "card", filter: request.query_parameters), method: :post, data: { controller: "debounce", debounce_target: "form" } do |form| %>
+      <%= form_with url: search_items_path(feed_id: @feed.id, type: request.query_parameters[:type], liked: request.query_parameters[:liked]), method: :post, data: { controller: "debounce", debounce_target: "form" } do |form| %>
         <%= render FormFieldComponent.new(form: form, attribute_key: :query, data: { action: "input->debounce#search" }, placeholder: "キーワード", size: "sm") %>
       <% end %>
     </div>
     <div data-loading-target="loading" class="hidden mt-4">
       <%= render(LoadingComponent.new) %>
     </div>
-    <%= turbo_frame_tag :items, class: "grid md:grid-cols-2 lg:grid-cols-4 gap-2", data: { loading_target: "content" } do %>
-      <%= render partial: "items/item", collection: @items, as: :item, locals: { type: "card" } %>
+    <%= turbo_frame_tag :items, class: class_names("grid md:grid-cols-2 lg:grid-cols-4 gap-2": params[:type] != "list"), data: { loading_target: "content" } do %>
+      <%= render partial: "items/item", collection: @items, as: :item, locals: { type: request.query_parameters[:type] } %>
     <% end %>
   </div>
 </div>

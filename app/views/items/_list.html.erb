@@ -1,0 +1,22 @@
+<%= link_to item.url do %>
+  <div class="flex items-center justify-between">
+    <div class="flex flex-col gap-1">
+      <div class="font-bold text-sm">
+        <%= truncate(item.title, omission: "...", length: 70) %>
+      </div>
+      <div class="flex items-center gap-1 text-xs">
+        <%= item.feed.title %>
+        <div class="text-slate-600">
+          <%= l item.published_at, format: :long %>
+        </div>
+      </div>
+    </div>
+    <div class="flex gap-1">
+      <%= link_to "#", class: "hover:bg-gray-200 block" do %>
+        <%= icon "bookmark", css: "text-slate-600" %>
+      <% end %>
+      <%= render "user_items/like", user_item: item.user_item(current_user) %>
+    </div>
+  </div>
+  <hr class="bg-gray-200 my-2">
+<% end %>

@@ -16,16 +16,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  def change_view
-    session[:type] = params[:type]
-
-    respond_to do |format|
-      format.turbo_stream do
-        render turbo_stream: turbo_stream.update(:items, partial: "items/item", collection: @items, as: :item, locals: {type: params[:type]})
-      end
-    end
-  end
-
   private
 
   def set_folder
@@ -45,7 +35,7 @@ class ItemsController < ApplicationController
       current_user.items
     end
 
-    items = items.eager_load(:user_items).where(user_items: {user: current_user, liked: true}) if params[:filter].present? && params[:filter][:liked].present?
+    items = items.eager_load(:user_items).where(user_items: {user: current_user, liked: true}) if params[:liked].present?
 
     @items = if params[:query].present?
       items.by_keyword(params[:query]).order(published_at: :desc)

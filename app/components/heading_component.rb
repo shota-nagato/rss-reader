@@ -7,9 +7,9 @@ class HeadingComponent < ViewComponent::Base
   end
 
   def text_size
-    return "text-3xl" if @size == "h1"
-    return "text-2xl" if @size == "h2"
-    return "text-xl" if @size == "h3"
+    return "text-2xl" if @size == "h1"
+    return "text-xl" if @size == "h2"
+    return "text-md" if @size == "h3"
     "text-lg"
   end
 end
