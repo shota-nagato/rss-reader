@@ -2,12 +2,6 @@
   <div class="flex justify-between items-center">
     <%= render(HeadingComponent.new(size: "h1", text: "後で読む")) %>
   </div>
-  <div class="flex justify-between items-center">
-    <div></div>
-    <%= form_with url: search_items_path(type: "list"), method: :post, data: { controller: "debounce", debounce_target: "form" } do |form| %>
-      <%= render FormFieldComponent.new(form: form, attribute_key: :query, data: { action: "input->debounce#search" }, placeholder: "キーワード", size: "sm") %>
-    <% end %>
-  </div>
   <%= turbo_frame_tag :items do %>
     <%= render partial: "items/item", collection: @items, as: :item, locals: { type: "list" } %>
   <% end %>
