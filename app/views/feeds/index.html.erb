@@ -5,8 +5,8 @@
   </div>
   <div class="flex justify-between items-center">
     <div class="flex items-center gap-4 text-sm text-slate-600 mb-2 md:mb-0">
-      <div class="font-bold">全て</div>
-      <div class="">お気に入り</div>
+      <%= link_to "全て", feeds_path, class: class_names("font-bold text-green-400": request.query_string.blank?) %>
+      <%= link_to "お気に入り", feeds_path(liked: true), class: class_names("font-bold text-green-400": request.query_string.present?) %>
     </div>
     <%= form_with url: search_items_path(type: "list"), method: :post, data: { controller: "debounce", debounce_target: "form" } do |form| %>
       <%= render FormFieldComponent.new(form: form, attribute_key: :query, data: { action: "input->debounce#search" }, placeholder: "キーワード", size: "sm") %>

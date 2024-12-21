@@ -7,6 +7,7 @@ class FoldersController < ApplicationController
 
   def show
     @items = Item.user_folder_items(@folder, current_user).order(published_at: :desc)
+    @items = @items.eager_load(:user_items).where(user_items: {user: current_user, liked: true}) if params[:liked].present?
   end
 
   def new

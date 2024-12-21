@@ -3,6 +3,7 @@ class FeedsController < ApplicationController
 
   def index
     @items = current_user.items.distinct.order(published_at: :desc)
+    @items = @items.eager_load(:user_items).where(user_items: {user: current_user, liked: true}) if params[:liked].present?
   end
 
   def new
