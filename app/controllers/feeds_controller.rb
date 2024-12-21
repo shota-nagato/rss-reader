@@ -2,7 +2,7 @@ class FeedsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @items = current_user.items.distinct.order(published_at: :desc)
+    @items = current_user.items.preload(:feed, user_items: :user).distinct.order(published_at: :desc)
     @items = @items.eager_load(:user_items).where(user_items: {user: current_user, liked: true}) if params[:liked].present?
   end
 
