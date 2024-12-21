@@ -1,0 +1,159 @@
+<div class="min-h-screen flex flex-col">
+  <header class="bg-white shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+      <div class="text-2xl font-bold text-gray-900">
+        RSS Reader
+      </div>
+      <div class="flex gap-3">
+        <%= link_to "ログイン", new_user_session_path, class: "text-gray-600 hover:text-gray-900 py-1 px-2 rounded border" %>
+        <%= link_to "無料で始める", new_user_registration_path, class: "bg-green-500 text-white hover:bg-green-600 py-1 px-2 rounded" %>
+      </div>
+    </div>
+  </header>
+  <main class="flex-grow">
+    <div class="bg-gradient-to-r from-green-500 to-emerald-600 text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
+        <h1 class="text-4xl font-extrabold sm:text-5xl md:text-6xl">
+          全てのニュースを、一つの場所で
+        </h1>
+        <p class="mt-3 max-w-md mx-auto text-xl sm:text-2xl md:mt-5 md:max-w-3xl">
+          RSS Readerで、お気に入りのウェブサイトの最新情報を簡単に追跡・整理できます。
+        </p>
+        <div class="mt-10">
+          <%= link_to "無料で始める", new_user_registration_path, class: "text-green-600 bg-white hover:bg-gray-100 py-2 px-4 rounded" %>
+        </div>
+      </div>
+    </div>
+    <div class="py-24 bg-gray-50" id="features">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+            多彩な機能
+          </h2>
+          <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+            RSS Readerは、あなたの情報管理をサポートする様々な機能を提供します。
+          </p>
+        </div>
+
+        <div class="mt-20 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div key={feature.name} class="pt-6">
+            <div class="flow-root bg-white rounded-lg px-6 pb-8">
+              <div class="-mt-6">
+                <div>
+                  <span class="inline-flex items-center justify-center p-3 bg-green-500 rounded-md shadow-lg">
+                    <%= icon "folder", css: "text-white" %>
+                  </span>
+                </div>
+                <h3 class="mt-8 text-lg font-medium text-gray-900 tracking-tight">フォルダ分け</h3>
+                <p class="mt-5 text-base text-gray-500">記事を整理し、簡単にアクセス</p>
+              </div>
+            </div>
+          </div>
+          <div key={feature.name} class="pt-6">
+            <div class="flow-root bg-white rounded-lg px-6 pb-8">
+              <div class="-mt-6">
+                <div>
+                  <span class="inline-flex items-center justify-center p-3 bg-green-500 rounded-md shadow-lg">
+                    <%= icon "bookmark", css: "text-white" %>
+                  </span>
+                </div>
+                <h3 class="mt-8 text-lg font-medium text-gray-900 tracking-tight">ブックマーク・お気に入り</h3>
+                <p class="mt-5 text-base text-gray-500">重要な記事を保存</p>
+              </div>
+            </div>
+          </div>
+          <div key={feature.name} class="pt-6">
+            <div class="flow-root bg-white rounded-lg px-6 pb-8">
+              <div class="-mt-6">
+                <div>
+                  <span class="inline-flex items-center justify-center p-3 bg-green-500 rounded-md shadow-lg">
+                    <%= icon "search", css: "text-white" %>
+                  </span>
+                </div>
+                <h3 class="mt-8 text-lg font-medium text-gray-900 tracking-tight">検索</h3>
+                <p class="mt-5 text-base text-gray-500">必要な情報をすぐに見つける</p>
+              </div>
+            </div>
+          </div>
+          <div key={feature.name} class="pt-6">
+            <div class="flow-root bg-white rounded-lg px-6 pb-8">
+              <div class="-mt-6">
+                <div>
+                  <span class="inline-flex items-center justify-center p-3 bg-green-500 rounded-md shadow-lg">
+                    <%= icon "tag", css: "text-white" %>
+                  </span>
+                </div>
+                <h3 class="mt-8 text-lg font-medium text-gray-900 tracking-tight">タグ付け</h3>
+                <p class="mt-5 text-base text-gray-500">記事を分類し、管理を容易に</p>
+              </div>
+            </div>
+          </div>
+          <div key={feature.name} class="pt-6">
+            <div class="flow-root bg-white rounded-lg px-6 pb-8">
+              <div class="-mt-6">
+                <div>
+                  <span class="inline-flex items-center justify-center p-3 bg-green-500 rounded-md shadow-lg">
+                    <%= icon "list-bullet", css: "text-white" %>
+                  </span>
+                </div>
+                <h3 class="mt-8 text-lg font-medium text-gray-900 tracking-tight">表示形式の変更</h3>
+                <p class="mt-5 text-base text-gray-500">リスト、カードなど好みの表示形式に切り替え</p>
+              </div>
+            </div>
+          </div>
+          <div key={feature.name} class="pt-6">
+            <div class="flow-root bg-white rounded-lg px-6 pb-8">
+              <div class="-mt-6">
+                <div>
+                  <span class="inline-flex items-center justify-center p-3 bg-green-500 rounded-md shadow-lg">
+                    <%= icon "comment", css: "text-white" %>
+                  </span>
+                </div>
+                <h3 class="mt-8 text-lg font-medium text-gray-900 tracking-tight">コメント機能</h3>
+                <p class="mt-5 text-base text-gray-500">記事にメモや感想を追加</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-green-700">
+      <div class="max-w-2xl mx-auto text-center py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
+          <span class="block">情報収集を効率化しませんか？</span>
+          <span class="block">今すぐRSS Readerを始めましょう。</span>
+        </h2>
+        <p class="mt-4 text-lg leading-6 text-green-200">
+          無料で全ての機能を体験できます。クレジットカードは不要です。
+        </p>
+        <div class="mt-8">
+          <%= link_to "無料で始める", new_user_registration_path, class: "mt-8 w-full sm:w-auto bg-white text-green-700 hover:bg-green-50 px-4 py-2 rounded" %>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="bg-gray-800">
+    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+      <nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
+        <div class="px-5 py-2">
+          <div href="#" class="text-base text-gray-400 hover:text-gray-300">
+            利用規約
+          </div>
+        </div>
+        <div class="px-5 py-2">
+          <div href="#" class="text-base text-gray-400 hover:text-gray-300">
+            プライバシーポリシー
+          </div>
+        </div>
+        <div class="px-5 py-2">
+          <div href="#" class="text-base text-gray-400 hover:text-gray-300">
+            お問い合わせ
+          </div>
+        </div>
+      </nav>
+      <p class="mt-8 text-center text-base text-gray-400">
+        &copy; 2023 RSS Reader, Inc. All rights reserved.
+      </p>
+    </div>
+  </footer>
+</div>
