@@ -45,6 +45,8 @@ class ItemsController < ApplicationController
       current_user.items
     end
 
+    items = items.eager_load(:user_items).where(user_items: {user: current_user, liked: true}) if params[:filter].present? && params[:filter][:liked].present?
+
     @items = if params[:query].present?
       items.by_keyword(params[:query]).order(published_at: :desc)
     else
