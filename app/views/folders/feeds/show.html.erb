@@ -6,10 +6,10 @@
     </div>
     <div class="flex items-center gap-4">
       <div class="flex">
-        <%= link_to folder_feed_path(@folder, @feed, request.query_parameters.merge(type: "card")), class: class_names("border", "text-green-400 border-green-400": request.query_parameters[:type] != "list") do %>
+        <%= link_to folder_feed_path(@folder, @feed, request.query_parameters.merge(type: "card")), class: class_names("text-green-400": request.query_parameters[:type] != "list") do %>
           <%= icon "squares" %>
         <% end %>
-        <%= link_to folder_feed_path(@folder, @feed, request.query_parameters.merge(type: "list")), class: class_names("border", "text-green-400 border-green-400": request.query_parameters[:type] == "list") do %>
+        <%= link_to folder_feed_path(@folder, @feed, request.query_parameters.merge(type: "list")), class: class_names("text-green-400": request.query_parameters[:type] == "list") do %>
           <%= icon "list-bullet" %>
         <% end %>
       </div>

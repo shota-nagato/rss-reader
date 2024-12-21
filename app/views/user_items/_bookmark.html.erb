@@ -1,0 +1,5 @@
+<%= turbo_frame_tag dom_id(user_item, "bookmark") do %>
+  <%= link_to user_item_bookmark_path(user_item), data: { turbo_method: :patch }, class: "hover:bg-gray-200 block" do %>
+    <%= icon user_item.bookmarked ? "bookmark-solid" : "bookmark", css: user_item.bookmarked ? "text-green-400" : "text-slate-600" %>
+  <% end %>
+<% end %>

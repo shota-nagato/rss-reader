@@ -1,0 +1,8 @@
+<div class="flex flex-col gap-4">
+  <div class="flex justify-between items-center">
+    <%= render(HeadingComponent.new(size: "h1", text: "後で読む")) %>
+  </div>
+  <%= turbo_frame_tag :items do %>
+    <%= render partial: "items/item", collection: @items, as: :item, locals: { type: "list" } %>
+  <% end %>
+</div>
