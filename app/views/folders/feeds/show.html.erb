@@ -5,13 +5,13 @@
       <div class="relative z-0">
         <%= render DropdownComponent.new(icon: "list-bullet") do %>
           <%= render DropdownItemComponent.new(
-            href: change_view_items_path(feed_id: @feed.id, type: "list"),
+            href: change_view_items_path(feed_id: @feed.id, type: "list", filter: request.query_parameters),
             data: { turbo_method: :post, controller: "change-view", change_view_type_value: "list", action: "click->change-view#changeView" },
             icon: "list-bullet",
             text: "リスト表示"
           ) %>
           <%= render DropdownItemComponent.new(
-            href: change_view_items_path(feed_id: @feed.id, type: "card"),
+            href: change_view_items_path(feed_id: @feed.id, type: "card", filter: request.query_parameters),
             data: { turbo_method: :post, controller: "change-view", change_view_type_value: "card", action: "click->change-view#changeView" },
             icon: "squares",
             text: "カード表示"
