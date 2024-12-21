@@ -23,7 +23,10 @@ Rails.application.routes.draw do
 
   resources :user_items do
     resource :like, only: :update, module: :user_items
+    resource :bookmark, only: :update, module: :user_items
   end
+
+  get "/bookmarks", to: "bookmarks#index"
 
   authenticated :user do
     root to: "dashboard#show", as: :user_root

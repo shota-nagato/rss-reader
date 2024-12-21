@@ -25,10 +25,7 @@
     </div>
   <% end %>
   <div class="absolute bottom-1 right-1 flex items-center gap-1">
-    <%= link_to "#", class: "hover:bg-gray-200 block" do %>
-      <%= icon "bookmark", css: "text-slate-600" %>
-    <% end %>
-
+    <%= render "user_items/bookmark", user_item: item.user_item(current_user) %>
     <%= render "user_items/like", user_item: item.user_item(current_user) %>
   </div>
 </div>
