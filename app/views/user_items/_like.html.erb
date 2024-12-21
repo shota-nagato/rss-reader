@@ -1,4 +1,4 @@
-<%= turbo_frame_tag dom_id(user_item) do %>
+<%= turbo_frame_tag dom_id(user_item, "like") do %>
   <%= link_to user_item_like_path(user_item), data: { turbo_method: :patch }, class: "hover:bg-gray-200 block" do %>
     <%= icon user_item.liked ? "star-solid" : "star", css: user_item.liked ? "text-red-400" : "text-slate-600" %>
   <% end %>

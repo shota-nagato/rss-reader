@@ -10,7 +10,7 @@ class UserItems::BookmarksController < ApplicationController
     respond_to do |format|
       format.turbo_stream {
         render turbo_stream: turbo_stream.replace(
-          dom_id(user_item),
+          dom_id(user_item, "bookmark"),
           partial: "user_items/bookmark", locals: {user_item: user_item}
         )
       }

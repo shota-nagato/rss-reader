@@ -10,7 +10,7 @@ class UserItems::LikesController < ApplicationController
     respond_to do |format|
       format.turbo_stream {
         render turbo_stream: turbo_stream.replace(
-          dom_id(user_item),
+          dom_id(user_item, "like"),
           partial: "user_items/like", locals: {user_item: user_item}
         )
       }
