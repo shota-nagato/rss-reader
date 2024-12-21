@@ -1,6 +1,9 @@
 <div data-controller="loading" class="flex flex-col gap-4">
   <div class="flex justify-between items-start gap-4">
-    <%= render(HeadingComponent.new(size: "h1", text: @feed.title)) %>
+    <div class="flex flex-col gap-1">
+      <%= render(HeadingComponent.new(size: "h1", text: @feed.title)) %>
+      <p class="text-xs text-slate-800"><%= @feed.description %></p>
+    </div>
     <div class="flex items-center gap-4">
       <div class="relative z-0">
         <%= render DropdownComponent.new(icon: "list-bullet") do %>

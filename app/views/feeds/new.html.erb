@@ -1,6 +1,7 @@
 <div class="flex flex-col gap-8">
+  <%= render HeadingComponent.new(size: "h1", text: "フィード登録") %>
   <div class="flex flex-col gap-2">
-    <%= render(HeadingComponent.new(size: "h1", text: "キーワード、フィードのURLで検索")) %>
+    <%= render(HeadingComponent.new(size: "h2", text: "キーワード、フィードのURLで検索")) %>
     <%= form_with url: search_feeds_path, method: :post, html: { class: "relative" }, data: { turbo_frame: :feed, controller: "debounce loading", debounce_target: "form", action: "turbo:submit-start->loading#displayLoading turbo:submit-end->loading#displayContent" } do |form| %>
       <%= render(FormFieldComponent.new(form: form, attribute_key: :query, placeholder: "キーワード、フィードのURL", data: { action: "input->debounce#search" })) %>
       <div data-loading-target="loading" class="hidden">
