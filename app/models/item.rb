@@ -12,6 +12,6 @@ class Item < ApplicationRecord
   scope :by_keyword, ->(keyword) { where(arel_table[:title].matches("%#{sanitize_sql_like(keyword)}%")) }
 
   def user_item(user)
-    user_items.find_by(user: user)
+    user_items.find { |user_item| user_item.user_id == user.id }
   end
 end
