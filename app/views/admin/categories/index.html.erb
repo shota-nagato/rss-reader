@@ -1,0 +1,24 @@
+<div class="p-4">
+  <%= render HeadingComponent.new(size: "h1", text: "カテゴリー") %>
+</div>
+
+<div class="overflow-x-auto hidden-scrollbar">
+  <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+    <thead class="text-xs text-gray-700 bg-gray-50">
+      <tr>
+        <th scope="col" class="px-6 py-3">
+          ID
+        </th>
+        <th scope="col" class="px-6 py-3">
+          カテゴリ名
+        </th>
+        <th scope="col" class="px-6 py-3">
+          フィード数
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @categories %>
+    </tbody>
+  </table>
+</div>
