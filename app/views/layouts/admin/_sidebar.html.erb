@@ -1,0 +1,53 @@
+<div
+  id="sidebar-background"
+  class="fixed inset-0 bg-slate-900 bg-opacity-30 z-10 md:hidden bg-opacity-30 opacity-0 pointer-events-none"
+  data-controller="sidebar"
+  data-action="click->sidebar#close">
+</div>
+<div id="sidebar" class="flex flex-col absolute left-0 top-0 z-20 md:static top-0 left-0 bg-gray-50 shadow p-4 w-[240px] h-screen transition-transform -translate-x-full md:translate-x-0">
+  <%= link_to admin_root_path, class: "font-bold text-xl mb-16" do %>
+    RSS Reader Admin
+  <% end %>
+
+  <div class="text-sm text-slate-500 mb-2 px-4">ユーザー</div>
+  <ul class="flex flex-col mb-4">
+    <li>
+      <%= link_to "#", class: "#{controller.controller_path == "feeds" ? "text-green-400" : ""} flex items-center gap-2 px-8 py-2 rounded-sm hover:bg-gray-100 text-sm w-full" do %>
+        <div class="font-bold">一般ユーザー</div>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to "#", class: "#{controller.controller_path == "feeds" ? "text-green-400" : ""} flex items-center gap-2 px-8 py-2 rounded-sm hover:bg-gray-100 text-sm w-full" do %>
+        <div class="font-bold">管理者ユーザー</div>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to "#", class: "#{controller.controller_path == "feeds" ? "text-green-400" : ""} flex items-center gap-2 px-8 py-2 rounded-sm hover:bg-gray-100 text-sm w-full" do %>
+        <div class="font-bold">フォルダ</div>
+      <% end %>
+    </li>
+  </ul>
+
+  <div class="text-sm text-slate-500 mb-2 px-4">フィード</div>
+  <ul class="flex flex-col mb-4">
+    <li>
+      <%= link_to "#", class: "#{controller.controller_path == "feeds" ? "text-green-400" : ""} flex items-center gap-2 px-8 py-2 rounded-sm hover:bg-gray-100 text-sm w-full" do %>
+        <div class="font-bold">フィード</div>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to "#", class: "#{controller.controller_path == "feeds" ? "text-green-400" : ""} flex items-center gap-2 px-8 py-2 rounded-sm hover:bg-gray-100 text-sm w-full" do %>
+        <div class="font-bold">購読</div>
+      <% end %>
+    </li>
+  </ul>
+
+  <div class="text-sm text-slate-500 mb-2 px-4">マスタデータ</div>
+  <ul class="flex flex-col mb-4">
+    <li>
+      <%= link_to "#", class: "#{controller.controller_path == "feeds" ? "text-green-400" : ""} flex items-center gap-2 px-8 py-2 rounded-sm hover:bg-gray-100 text-sm w-full" do %>
+        <div class="font-bold">カテゴリ</div>
+      <% end %>
+    </li>
+  </ul>
+</div>
