@@ -19,8 +19,7 @@
         <% end %>
       <% end %>
       <%= render DropdownComponent.new do %>
-        <%= render DropdownItemComponent.new(href: "#", icon: "pencil", text: "編集", underline: true) %>
-        <%= render DropdownItemComponent.new(href: "#", icon: "trash", text: "削除", css: "text-red-400") %>
+        <%= render DropdownItemComponent.new(href: feed_feed_subscription_path(@feed, folder_id: @folder.id), data: { turbo_method: :delete }, icon: "trash", text: "登録解除", css: "text-red-400") %>
       <% end %>
     </div>
   </div>
@@ -38,7 +37,11 @@
       <%= render(LoadingComponent.new) %>
     </div>
     <%= turbo_frame_tag :items, class: class_names("grid md:grid-cols-2 lg:grid-cols-4 gap-2": params[:type] != "list"), data: { loading_target: "content" } do %>
-      <%= render partial: "items/item", collection: @items, as: :item, locals: { type: request.query_parameters[:type] } %>
+      <% if @items.count.zero? %>
+        <div class="text-sm text-slate-600">記事はありません。</div>
+      <% else %>
+        <%= render partial: "items/item", collection: @items, as: :item, locals: { type: request.query_parameters[:type] } %>
+      <% end %>
     <% end %>
   </div>
 </div>

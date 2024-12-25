@@ -32,6 +32,13 @@ class FeedSubscriptionsController < ApplicationController
     end
   end
 
+  def destroy
+    folder = current_user.folders.find(params[:folder_id])
+    folder.unsubscribe(@feed, current_user)
+
+    redirect_to folder_path(folder), notice: "購読を解除しました"
+  end
+
   private
 
   def set_feed

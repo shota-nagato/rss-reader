@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       post :search
     end
     resource :update, only: :update, module: :feeds
-    resources :feed_subscriptions
+    resources :feed_subscriptions, only: %i[new create destroy]
   end
 
   resources :folders do
