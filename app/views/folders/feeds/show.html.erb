@@ -19,8 +19,7 @@
         <% end %>
       <% end %>
       <%= render DropdownComponent.new do %>
-        <%= render DropdownItemComponent.new(href: "#", icon: "pencil", text: "編集", underline: true) %>
-        <%= render DropdownItemComponent.new(href: "#", icon: "trash", text: "削除", css: "text-red-400") %>
+        <%= render DropdownItemComponent.new(href: feed_feed_subscription_path(@feed, folder_id: @folder.id), data: { turbo_method: :delete }, icon: "trash", text: "登録解除", css: "text-red-400") %>
       <% end %>
     </div>
   </div>
