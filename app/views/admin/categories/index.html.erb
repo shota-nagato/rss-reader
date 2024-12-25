@@ -1,5 +1,6 @@
-<div class="p-4">
+<div class="p-4 flex justify-between items-center">
   <%= render HeadingComponent.new(size: "h1", text: "カテゴリー") %>
+  <%= render(ButtonComponent.new(text: "追加する", href: new_admin_category_path)) %>
 </div>
 
 <div class="overflow-x-auto hidden-scrollbar">
