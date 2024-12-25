@@ -30,6 +30,8 @@ Rails.application.routes.draw do
 
   authenticated :user, ->(u) { u.admin? } do
     namespace :admin do
+      resources :categories
+
       root to: "dashboard#show"
     end
   end
