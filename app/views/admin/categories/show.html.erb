@@ -1,5 +1,8 @@
 <div class="flex flex-col gap-4 p-4">
-  <%= render HeadingComponent.new(size: "h1", text: "カテゴリー：#{@category.name}") %>
+  <div class="flex justify-between items-center">
+    <%= render HeadingComponent.new(size: "h1", text: "カテゴリー：#{@category.name}") %>
+    <%= render ButtonComponent.new(text: "編集", href: edit_admin_category_path(@category)) %>
+  </div>
   <div class="flex flex-col gap-6">
     <div>
       <div class="font-bold text-sm">ID</div>

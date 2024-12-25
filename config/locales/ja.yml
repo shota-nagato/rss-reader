@@ -3,12 +3,15 @@ ja:
     models:
       folder: フォルダ
       feed: フィード
+      category: カテゴリ
     attributes:
       folder:
         name: フォルダ名
       feed:
         title: タイトル
         url: URL
+      category:
+        name: カテゴリ名
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

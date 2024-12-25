@@ -1,0 +1,7 @@
+<%= form_with(model: [:admin, category]) do |form| %>
+  <div class="mb-4">
+    <%= form.label :name %>
+    <%= render(FormFieldComponent.new(form: form, field_type: :text_field, attribute_key: :name)) %>
+  </div>
+  <%= render(ButtonComponent.new(text: @category.new_record? ? "作成" : "編集", type: :submit)) %>
+<% end %>
