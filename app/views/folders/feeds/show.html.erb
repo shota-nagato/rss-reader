@@ -37,7 +37,11 @@
       <%= render(LoadingComponent.new) %>
     </div>
     <%= turbo_frame_tag :items, class: class_names("grid md:grid-cols-2 lg:grid-cols-4 gap-2": params[:type] != "list"), data: { loading_target: "content" } do %>
-      <%= render partial: "items/item", collection: @items, as: :item, locals: { type: request.query_parameters[:type] } %>
+      <% if @items.count.zero? %>
+        <div class="text-sm text-slate-600">記事はありません。</div>
+      <% else %>
+        <%= render partial: "items/item", collection: @items, as: :item, locals: { type: request.query_parameters[:type] } %>
+      <% end %>
     <% end %>
   </div>
 </div>
