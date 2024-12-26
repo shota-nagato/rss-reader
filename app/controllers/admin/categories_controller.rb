@@ -34,6 +34,8 @@ class Admin::CategoriesController < Admin::ApplicationController
   end
 
   def destroy
+    @category.destroy
+    redirect_to admin_categories_path, notice: "カテゴリを削除しました"
   end
 
   private
