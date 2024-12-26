@@ -17,4 +17,7 @@
       <%= 1 %>
     </div>
   </div>
+  <div class="flex justify-end">
+    <%= link_to "削除", admin_category_path(@category), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか?" }, class: "text-red-400 text-sm border px-2 py-1 rounded" %>
+  </div>
 </div>
