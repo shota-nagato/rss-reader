@@ -21,8 +21,14 @@
 #  fk_rails_...  (folder_id => folders.id)
 #  fk_rails_...  (user_id => users.id)
 #
-class FeedSubscription < ApplicationRecord
-  belongs_to :user
-  belongs_to :feed
-  belongs_to :folder
+require "rails_helper"
+
+RSpec.describe FeedSubscription, type: :model do
+  describe "factory" do
+    subject { create(:feed_subscription) }
+
+    it "レコードを新規作成できる" do
+      expect { subject }.to change { FeedSubscription.count }.by(1)
+    end
+  end
 end

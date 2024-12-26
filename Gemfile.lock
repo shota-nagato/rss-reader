@@ -73,6 +73,9 @@ GEM
       tzinfo (~> 2.0, >= 2.0.5)
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
+    annotate (3.2.0)
+      activerecord (>= 3.2, < 8.0)
+      rake (>= 10.4, < 14.0)
     ast (2.4.2)
     base64 (0.2.0)
     bcrypt (3.1.20)
@@ -117,6 +120,7 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.5.1)
+    docile (1.4.1)
     drb (2.2.1)
     erb_lint (0.5.0)
       activesupport
@@ -128,6 +132,11 @@ GEM
     erubi (1.13.0)
     et-orbi (1.2.11)
       tzinfo
+    factory_bot (6.5.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.4.4)
+      factory_bot (~> 6.5)
+      railties (>= 5.0.0)
     faraday (2.12.2)
       faraday-net_http (>= 2.0, < 3.5)
       json
@@ -316,6 +325,12 @@ GEM
     ruby-progressbar (1.13.0)
     sax-machine (1.3.2)
     securerandom (0.3.1)
+    simplecov (0.22.0)
+      docile (~> 1.1)
+      simplecov-html (~> 0.11)
+      simplecov_json_formatter (~> 0.1)
+    simplecov-html (0.13.1)
+    simplecov_json_formatter (0.1.4)
     smart_properties (1.17.0)
     solid_cable (3.0.4)
       actioncable (>= 7.2)
@@ -395,6 +410,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  annotate
   bootsnap
   capybara
   capybara-playwright-driver
@@ -402,6 +418,7 @@ DEPENDENCIES
   debug
   devise
   erb_lint
+  factory_bot_rails
   faraday
   feedjira
   jbuilder
@@ -411,6 +428,7 @@ DEPENDENCIES
   rails (~> 7.2.1)
   rails_live_reload
   rspec-rails
+  simplecov
   solid_cable
   solid_cache
   solid_queue

@@ -27,14 +27,10 @@
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
-require "rails_helper"
-
-RSpec.describe User, type: :model do
-  describe "factory" do
-    subject { create(:user) }
-
-    it "レコードを新規作成できる" do
-      expect { subject }.to change { User.count }.by(1)
-    end
+FactoryBot.define do
+  factory :user do
+    email { |n| "user#{n}@example.com" }
+    password { "password" }
+    password_confirmation { "password" }
   end
 end

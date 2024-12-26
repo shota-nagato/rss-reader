@@ -21,8 +21,10 @@
 #  fk_rails_...  (folder_id => folders.id)
 #  fk_rails_...  (user_id => users.id)
 #
-class FeedSubscription < ApplicationRecord
-  belongs_to :user
-  belongs_to :feed
-  belongs_to :folder
+FactoryBot.define do
+  factory :feed_subscription do
+    association :feed
+    association :folder
+    user { folder.user }
+  end
 end
