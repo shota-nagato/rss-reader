@@ -17,14 +17,9 @@
 #
 #  fk_rails_...  (user_id => users.id)
 #
-require "rails_helper"
-
-RSpec.describe Folder, type: :model do
-  describe "factory" do
-    subject { create(:folder) }
-
-    it "レコードを新規作成できる" do
-      expect { subject }.to change { Folder.count }.by(1)
-    end
+FactoryBot.define do
+  factory :folder do
+    name { "ビジネス" }
+    association :user
   end
 end

@@ -21,14 +21,9 @@
 #  fk_rails_...  (item_id => items.id)
 #  fk_rails_...  (user_id => users.id)
 #
-require "rails_helper"
-
-RSpec.describe UserItem, type: :model do
-  describe "factory" do
-    subject { create(:user_item) }
-
-    it "レコードを新規作成できる" do
-      expect { subject }.to change { UserItem.count }.by(1)
-    end
+FactoryBot.define do
+  factory :user_item do
+    association :user
+    association :item
   end
 end

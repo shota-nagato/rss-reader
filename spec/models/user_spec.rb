@@ -30,5 +30,11 @@
 require "rails_helper"
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "factory" do
+    subject { create(:user) }
+
+    it "レコードを新規作成できる" do
+      expect { subject }.to change { User.count }.by(1)
+    end
+  end
 end

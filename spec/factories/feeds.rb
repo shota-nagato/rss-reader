@@ -14,14 +14,11 @@
 #
 #  index_feeds_on_rss_url  (rss_url) UNIQUE
 #
-require "rails_helper"
-
-RSpec.describe Feed, type: :model do
-  describe "factory" do
-    subject { create(:feed) }
-
-    it "レコードを新規作成できる" do
-      expect { subject }.to change { Feed.count }.by(1)
-    end
+FactoryBot.define do
+  factory :feed do
+    title { "title" }
+    description { "description" }
+    rss_url { "https://example.com/rss" }
+    url { "https://example.com" }
   end
 end

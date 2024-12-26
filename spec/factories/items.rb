@@ -19,14 +19,12 @@
 #
 #  fk_rails_...  (feed_id => feeds.id)
 #
-require "rails_helper"
-
-RSpec.describe Item, type: :model do
-  describe "factory" do
-    subject { create(:item) }
-
-    it "レコードを新規作成できる" do
-      expect { subject }.to change { Item.count }.by(1)
-    end
+FactoryBot.define do
+  factory :item do
+    title { "タイトル" }
+    image_url { "https://example.com/image.jpg" }
+    url { "https://example.com" }
+    published_at { Time.current }
+    association :feed
   end
 end
