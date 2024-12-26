@@ -53,9 +53,11 @@ group :development, :test do
   gem "erb_lint", require: false
   gem "standard", require: false
   gem "rails_live_reload"
+  gem "factory_bot_rails"
 end
 
 group :development do
+  gem "annotate"
   gem "web-console"
 end
 
