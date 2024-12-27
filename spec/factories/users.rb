@@ -32,5 +32,10 @@ FactoryBot.define do
     email { |n| "user#{n}@example.com" }
     password { "password" }
     password_confirmation { "password" }
+    confirmed_at { Time.current }
+  end
+
+  trait :admin do
+    admin { true }
   end
 end
