@@ -27,7 +27,7 @@ class Admin::CategoriesController < Admin::ApplicationController
 
   def update
     if @category.update(category_params)
-      redirect_to admin_categories_path, notice: "カテゴリを更新しました"
+      redirect_to admin_category_path(@category), notice: "カテゴリを更新しました"
     else
       render :edit, status: :unprocessable_entity
     end
