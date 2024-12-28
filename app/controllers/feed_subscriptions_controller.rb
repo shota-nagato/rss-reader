@@ -36,6 +36,9 @@ class FeedSubscriptionsController < ApplicationController
     folder = current_user.folders.find(params[:folder_id])
     folder.unsubscribe(@feed, current_user)
 
+    user_items = current_user.user_items.joins(item: :feed).where(feeds: {id: @feed.id})
+    user_items.destroy_all
+
     redirect_to folder_path(folder), notice: "購読を解除しました"
   end
 

@@ -65,6 +65,7 @@ group :test do
   gem "capybara"
   gem "capybara-playwright-driver"
   gem "simplecov", require: false
+  gem "webmock"
 end
 
 gem "devise"

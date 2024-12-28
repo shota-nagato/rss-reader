@@ -23,7 +23,7 @@ FactoryBot.define do
   factory :item do
     title { "タイトル" }
     image_url { "https://example.com/image.jpg" }
-    url { "https://example.com" }
+    url { |n| "https://example#{n}.com" }
     published_at { Time.current }
     association :feed
   end

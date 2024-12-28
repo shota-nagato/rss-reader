@@ -13,6 +13,10 @@
     <% end %>
   </div>
   <%= turbo_frame_tag :items do %>
-    <%= render partial: "items/item", collection: @items, as: :item, locals: { type: "list" } %>
+    <% if @items.count.zero? %>
+      <div class="text-sm text-slate-600">記事はありません。</div>
+    <% else %>
+      <%= render partial: "items/item", collection: @items, as: :item, locals: { type: "list" } %>
+    <% end %>
   <% end %>
 </div>
