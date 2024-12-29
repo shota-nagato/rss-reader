@@ -1,0 +1,7 @@
+coverage:
+  acceptable: 60%
+comment:
+  if: is_pull_request
+report:
+  datastores:
+    - artifact://${GITHUB_REPOSITORY}
