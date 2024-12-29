@@ -1,0 +1,14 @@
+<tr class="bg-white border-b">
+  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+    <%= link_to feed.id, admin_feed_path(feed), class: "underline" %>
+  </th>
+  <td class="px-6 py-4 whitespace-nowrap">
+    <%= feed.title %>
+  </td>
+  <td class="px-6 py-4 whitespace-nowrap">
+    <%= feed.category.present? ? feed.category.name : "未設定" %>
+  </td>
+  <td class="px-6 py-4 whitespace-nowrap">
+    <%= feed.url %>
+  </td>
+</tr>

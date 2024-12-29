@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   authenticated :user, ->(u) { u.admin? } do
     namespace :admin do
       resources :categories
+      resources :feeds
 
       root to: "dashboard#show"
     end

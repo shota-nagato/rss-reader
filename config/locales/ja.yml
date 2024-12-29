@@ -10,6 +10,8 @@ ja:
       feed:
         title: タイトル
         url: URL
+        rss_url: RSS URL
+        description: 説明
       category:
         name: カテゴリ名
     errors:

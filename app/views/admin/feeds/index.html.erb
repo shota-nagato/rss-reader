@@ -1,0 +1,28 @@
+<div class="p-4 flex justify-between items-center">
+  <%= render HeadingComponent.new(size: "h1", text: "フィード") %>
+  <%= render ButtonComponent.new(text: "追加する", href: "#") %>
+</div>
+
+<div class="overflow-x-auto hidden-scrollbar">
+  <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+    <thead class="text-xs text-gray-700 bg-gray-50">
+      <tr>
+        <th scope="col" class="px-6 py-3 whitespace-nowrap">
+          ID
+        </th>
+        <th scope="col" class="px-6 py-3 whitespace-nowrap">
+          タイトル
+        </th>
+        <th scope="col" class="px-6 py-3 whitespace-nowrap">
+          カテゴリ
+        </th>
+        <th scope="col" class="px-6 py-3 whitespace-nowrap">
+          URL
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @feeds %>
+    </tbody>
+  </table>
+</div>

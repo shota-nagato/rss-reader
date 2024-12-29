@@ -1,0 +1,23 @@
+<div class="flex flex-col gap-4 p-4">
+  <div class="flex justify-between items-center">
+    <%= render HeadingComponent.new(size: "h1", text: "フィード：#{@feed.title}") %>
+    <%= render ButtonComponent.new(text: "編集", href: edit_admin_feed_path(@feed)) %>
+  </div>
+  <div class="flex flex-col gap-6">
+    <div>
+      <div class="font-bold text-sm">ID</div>
+      <%= @feed.id %>
+    </div>
+    <div>
+      <div class="font-bold text-sm">タイトル</div>
+      <%= @feed.title %>
+    </div>
+    <div>
+      <div class="font-bold text-sm">カテゴリ</div>
+      <%= @feed.category.present? ? @feed.category.name : "未設定" %>
+    </div>
+  </div>
+  <div class="flex justify-end">
+    <%#= link_to "削除", admin_category_path(@category), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか?" }, class: "text-red-400 text-sm border px-2 py-1 rounded" %>
+  </div>
+</div>

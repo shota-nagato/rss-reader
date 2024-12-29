@@ -1,0 +1,23 @@
+<%= form_with(model: [:admin, feed]) do |form| %>
+  <div class="mb-4">
+    <%= form.label :title %>
+    <%= render(FormFieldComponent.new(form: form, field_type: :text_field, attribute_key: :title)) %>
+  </div>
+  <div class="mb-4">
+    <%= form.label :url %>
+    <%= render(FormFieldComponent.new(form: form, field_type: :text_field, attribute_key: :url)) %>
+  </div>
+  <div class="mb-4">
+    <%= form.label :rss_url %>
+    <%= render(FormFieldComponent.new(form: form, field_type: :text_field, attribute_key: :rss_url)) %>
+  </div>
+  <div class="mb-4">
+    <%= form.label :description %>
+    <%= render(FormFieldComponent.new(form: form, field_type: :text_area, attribute_key: :description)) %>
+  </div>
+  <div class="mb-4">
+    <%= form.label :category %>
+    <%= form.select :category_id, Category.all.map { |category| [category.name, category.id] }, { include_blank: true }, class: "block w-full rounded border shadow px-4 py-2" %>
+  </div>
+  <%= render(ButtonComponent.new(text: @feed.new_record? ? "作成" : "編集", type: :submit)) %>
+<% end %>

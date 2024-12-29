@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_21_113504) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_29_123638) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,6 +38,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_21_113504) do
     t.datetime "updated_at", null: false
     t.text "description"
     t.string "rss_url", null: false
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_feeds_on_category_id"
     t.index ["rss_url"], name: "index_feeds_on_rss_url", unique: true
   end
 
@@ -99,6 +101,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_21_113504) do
   add_foreign_key "feed_subscriptions", "feeds"
   add_foreign_key "feed_subscriptions", "folders"
   add_foreign_key "feed_subscriptions", "users"
+  add_foreign_key "feeds", "categories"
   add_foreign_key "folders", "users"
   add_foreign_key "items", "feeds"
   add_foreign_key "user_items", "items"

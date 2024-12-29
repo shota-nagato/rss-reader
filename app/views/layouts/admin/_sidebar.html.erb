@@ -31,7 +31,7 @@
   <div class="text-sm text-slate-500 mb-2 px-4">フィード</div>
   <ul class="flex flex-col mb-4">
     <li>
-      <%= link_to "#", class: "#{controller.controller_path == "feeds" ? "text-green-400" : ""} flex items-center gap-2 px-8 py-2 rounded-sm hover:bg-gray-100 text-sm w-full" do %>
+      <%= link_to admin_feeds_path, class: "#{controller.controller_path == "admin/feeds" ? "text-green-400" : ""} flex items-center gap-2 px-8 py-2 rounded-sm hover:bg-gray-100 text-sm w-full" do %>
         <div class="font-bold">フィード</div>
       <% end %>
     </li>

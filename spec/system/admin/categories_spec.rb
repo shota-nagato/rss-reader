@@ -17,7 +17,7 @@ RSpec.describe "Admin Categories", type: :system do
     end
 
     it "アクセスできない" do
-      visit admin_root_path
+      visit admin_categories_path
 
       expect(page).not_to have_content "ダッシュボード"
     end
