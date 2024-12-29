@@ -1,0 +1,20 @@
+coverage: # カバレッジ計測の設定
+  paths:
+    - coverage/.resultset.json # ここで指定した計測結果ファイルを読み込んで分析を行う
+  acceptable: 60% # カバレッジがこの数値を下回るとCIがfailする
+testExecutionTime: # テスト実行時間
+  steps:
+    - Exec rspec # この名前に対応するGitHub Actionsのstepの実行時間を計測する
+  acceptable: 3min # 実行時間がこの時間を上回るとCIがfailする
+codeToTestRatio: # Code to Test Ratio（実装コードの行数を1とした場合のテストコード行数の比率）の設定
+  code:
+    - "app/**/*.rb"
+  test:
+    - "spec/**/*_spec.rb"
+  acceptable: 1:0.8 # この数値を下回るとワークフローがfailする
+comment: # レポート内容をコメント投稿設定
+  if: is_pull_request # PRの場合のみコメントを投稿する
+  hideFooterLink: false # フッターのoctocovのリンクを非表示にしない
+report: # レポートの出力設定
+  datastores:
+    - artifact://${GITHUB_REPOSITORY}

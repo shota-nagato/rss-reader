@@ -64,6 +64,9 @@ jobs:
       - name: Run rspec
         run: bundle exec rspec
 
+      - name: Coverage Report by octocov (in this pull request)
+        uses: k1LoW/octocov-action@v1
+
   standardrb:
     runs-on: ubuntu-latest
     timeout-minutes: 10

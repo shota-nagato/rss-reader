@@ -14,13 +14,15 @@
         <% end %>
       </div>
       <%= form_with url: feed_update_path(@feed, type: request.query_parameters[:type], liked: request.query_parameters[:liked]), method: :patch, class: "w-6 h-6", data: { action: "turbo:submit-start->loading#displayLoading turbo:submit-end->loading#displayContent" } do %>
-        <%= button_tag type: "submit" do %>
+        <%= button_tag type: "submit", id: "feed-update-button" do %>
           <%= icon "arrow-path" %>
         <% end %>
       <% end %>
-      <%= render DropdownComponent.new do %>
-        <%= render DropdownItemComponent.new(href: feed_feed_subscription_path(@feed, folder_id: @folder.id), data: { turbo_method: :delete }, icon: "trash", text: "登録解除", css: "text-red-400") %>
-      <% end %>
+      <div id="folder-feed-dropdown">
+        <%= render DropdownComponent.new do %>
+          <%= render DropdownItemComponent.new(href: feed_feed_subscription_path(@feed, folder_id: @folder.id), data: { turbo_method: :delete }, icon: "trash", text: "登録解除", css: "text-red-400") %>
+        <% end %>
+      </div>
     </div>
   </div>
   <div>
