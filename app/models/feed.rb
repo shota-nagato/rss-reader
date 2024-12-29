@@ -9,10 +9,16 @@
 #  url         :string           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  category_id :bigint
 #
 # Indexes
 #
-#  index_feeds_on_rss_url  (rss_url) UNIQUE
+#  index_feeds_on_category_id  (category_id)
+#  index_feeds_on_rss_url      (rss_url) UNIQUE
+#
+# Foreign Keys
+#
+#  fk_rails_...  (category_id => categories.id)
 #
 class Feed < ApplicationRecord
   validates :title, :rss_url, :url, presence: true
@@ -21,6 +27,8 @@ class Feed < ApplicationRecord
   has_many :feed_subscriptions, dependent: :destroy
   has_many :holders, through: :feed_subscriptions
   has_many :items, dependent: :destroy
+
+  belongs_to :category, optional: true
 
   def self.search(query)
     return [] if query.blank?
