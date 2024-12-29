@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Folders::Feeds", type: :system do
   let(:user) { create(:user) }
-  let(:folder) { create(:folder, user: user) }
+  let(:folder) { create(:folder, user:) }
   let(:feed) { create(:feed) }
 
   before do
@@ -69,7 +69,7 @@ RSpec.describe "Folders::Feeds", type: :system do
       let(:item) { create(:item, feed:) }
 
       before do
-        create(:user_item, item:)
+        create(:user_item, item:, user:)
       end
 
       it "フィードの購読を解除できる" do
@@ -90,7 +90,7 @@ RSpec.describe "Folders::Feeds", type: :system do
       let(:item) { create(:item, feed:) }
 
       before do
-        create(:user_item, item:)
+        create(:user_item, item:, user:)
       end
 
       it "記事をお気に入り登録できる" do
@@ -108,7 +108,7 @@ RSpec.describe "Folders::Feeds", type: :system do
       let(:item) { create(:item, feed:) }
 
       before do
-        create(:user_item, item:)
+        create(:user_item, item:, user:)
       end
 
       it "記事をブックマーク登録できる" do
