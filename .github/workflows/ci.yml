@@ -61,8 +61,8 @@ jobs:
           bundle exec rails assets:precompile
           bundle exec rspec
 
-      - name: Coverage Report by octocov (in this pull request)
-        uses: k1LoW/octocov-action@v1
+      # - name: Coverage Report by octocov (in this pull request)
+        # uses: k1LoW/octocov-action@v1
 
   standardrb:
     runs-on: ubuntu-latest
