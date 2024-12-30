@@ -11,4 +11,7 @@
   <td class="px-6 py-4 whitespace-nowrap">
     <%= feed.url %>
   </td>
+  <td class="px-6 py-4 whitespace-nowrap">
+    <%= link_to "更新", admin_feed_update_path(feed), data: { turbo_method: :patch }, class: "border px-2 py-1 rounded-sm" %>
+  </td>
 </tr>
