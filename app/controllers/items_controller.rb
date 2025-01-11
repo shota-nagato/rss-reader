@@ -1,8 +1,12 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_folder
-  before_action :set_feed
-  before_action :set_items
+  before_action :set_folder, only: [:search]
+  before_action :set_feed, only: [:search]
+  before_action :set_items, only: [:search]
+
+  def show
+    @item = current_user.items.find(params[:id])
+  end
 
   def search
     respond_to do |format|

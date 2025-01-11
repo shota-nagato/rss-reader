@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_29_123638) do
+ActiveRecord::Schema[7.2].define(version: 2025_01_11_123436) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,6 +52,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_29_123638) do
     t.index ["user_id"], name: "index_folders_on_user_id"
   end
 
+  create_table "item_tags", force: :cascade do |t|
+    t.bigint "item_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_item_tags_on_item_id"
+    t.index ["tag_id"], name: "index_item_tags_on_tag_id"
+  end
+
   create_table "items", force: :cascade do |t|
     t.bigint "feed_id", null: false
     t.string "title", null: false
@@ -60,7 +69,16 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_29_123638) do
     t.datetime "published_at", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "summary"
     t.index ["feed_id"], name: "index_items_on_feed_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_tags_on_user_id"
   end
 
   create_table "user_items", force: :cascade do |t|
@@ -103,7 +121,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_29_123638) do
   add_foreign_key "feed_subscriptions", "users"
   add_foreign_key "feeds", "categories"
   add_foreign_key "folders", "users"
+  add_foreign_key "item_tags", "items"
+  add_foreign_key "item_tags", "tags"
   add_foreign_key "items", "feeds"
+  add_foreign_key "tags", "users"
   add_foreign_key "user_items", "items"
   add_foreign_key "user_items", "users"
 end

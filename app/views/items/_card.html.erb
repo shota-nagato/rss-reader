@@ -1,5 +1,5 @@
 <div class="relative border rounded p-2 hover:bg-gray-100">
-  <%= link_to item.url do %>
+  <%= link_to item_path(item), data: { turbo_frame: "item-slide-over", action: "click->sidebar#close" } do %>
     <div class="flex flex-col gap-2">
       <%= image_tag item.image_url, class: "rounded" if item.image_url.present? %>
       <div>
@@ -15,10 +15,6 @@
           <div class="flex items-center gap-1 text-slate-600">
             <%= icon "calendar" %>
             <p class="text-xs"><%= l item.published_at, format: :long %></p>
-          </div>
-          <div class="flex items-center gap-1 text-slate-600">
-            <%= icon "comment" %>
-            <span class="text-xs text-slate-600">1</span>
           </div>
         </div>
       </div>

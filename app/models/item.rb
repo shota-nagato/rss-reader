@@ -5,6 +5,7 @@
 #  id           :bigint           not null, primary key
 #  image_url    :string
 #  published_at :datetime         not null
+#  summary      :text
 #  title        :string           not null
 #  url          :string           not null
 #  created_at   :datetime         not null
@@ -24,6 +25,8 @@ class Item < ApplicationRecord
 
   has_many :user_items, dependent: :destroy
   has_many :users, through: :user_items
+  has_many :item_tags, dependent: :destroy
+  has_many :tags, through: :item_tags
 
   validates :title, :url, :published_at, presence: true
   validates :url, uniqueness: true

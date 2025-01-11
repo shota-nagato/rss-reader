@@ -38,6 +38,7 @@ class User < ApplicationRecord
   has_many :feeds, through: :feed_subscriptions
   has_many :user_items, dependent: :destroy
   has_many :items, through: :user_items
+  has_many :tags, dependent: :destroy
 
   def subscribe?(feed)
     feeds.include?(feed)

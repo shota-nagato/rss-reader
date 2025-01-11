@@ -8,7 +8,13 @@ class SaveItemsJob < ApplicationJob
     fetched_feed = Feedjira.parse(response.body)
 
     fetched_feed.entries.each do |item|
-      saved_feed.items.find_or_create_by(title: item.title, url: item.url, image_url: item.image, published_at: item.published)
+      saved_feed.items.find_or_create_by(
+        title: item.title,
+        summary: item.summary,
+        url: item.url,
+        image_url: item.image,
+        published_at: item.published
+      )
     end
   end
 end
