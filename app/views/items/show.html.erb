@@ -14,9 +14,12 @@
             <div class="flex flex-col h-full py-6 overflow-y-scroll bg-white shadow-xl">
               <div class="px-6 mb-8">
                 <div class="flex items-start justify-between">
-                  <div class="flex items-center gap-2" id="slide-over-title">
-                    <%= render "user_items/bookmark", user_item: @item.user_item(current_user) %>
-                    <%= render "user_items/like", user_item: @item.user_item(current_user) %>
+                  <div id="slide-over-title" class="w-full">
+                    <div class="flex items-center gap-2 w-full">
+                      <%= render "user_items/bookmark", user_item: @item.user_item(current_user) %>
+                      <%= render "user_items/like", user_item: @item.user_item(current_user) %>
+                    </div>
+                    <hr class="bg-gray-200 my-2">
                   </div>
                   <div class="flex items-center ml-3 h-7">
                     <button type="button" class="relative text-gray-400 bg-white rounded-md hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
