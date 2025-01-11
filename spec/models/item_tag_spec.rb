@@ -18,7 +18,7 @@
 #  fk_rails_...  (item_id => items.id)
 #  fk_rails_...  (tag_id => tags.id)
 #
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe ItemTag, type: :model do
   describe "factory" do

@@ -16,7 +16,7 @@
 #
 #  fk_rails_...  (user_id => users.id)
 #
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Tag, type: :model do
   describe "factory" do
