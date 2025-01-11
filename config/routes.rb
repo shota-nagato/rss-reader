@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resource :toggle, only: :update, module: :folders
   end
 
-  resources :items do
+  resources :items, only: :show do
     collection do
       post :search
       post :change_view

@@ -1,10 +1,10 @@
 <div
   id="sidebar-background"
-  class="fixed inset-0 bg-slate-900 bg-opacity-30 z-10 md:hidden bg-opacity-30 opacity-0 pointer-events-none"
+  class="fixed inset-0 bg-slate-900 bg-opacity-30 z-10 md:hidden opacity-0 pointer-events-none"
   data-controller="sidebar"
   data-action="click->sidebar#close">
 </div>
-<div id="sidebar" class="flex flex-col absolute left-0 top-0 z-20 md:static top-0 left-0 bg-gray-50 shadow p-4 w-[240px] h-screen transition-transform -translate-x-full md:translate-x-0">
+<div id="sidebar" class="flex flex-col absolute z-20 md:static top-0 left-0 bg-gray-50 shadow p-4 w-[240px] h-screen transition-transform -translate-x-full md:translate-x-0">
   <div class="font-bold text-xl mb-16">
     RSS Reader
   </div>
@@ -56,11 +56,11 @@
         </div>
       </li>
     <% end %>
-    <%= link_to new_folder_path, data: { turbo_frame: "slide-over", action: "click->sidebar#close" }, class: "px-10 flex items-center text-xs text-slate-400 gap-1" do %>
+    <%= link_to new_folder_path, data: { turbo_frame: "folder-slide-over", action: "click->sidebar#close" }, class: "px-10 flex items-center text-xs text-slate-400 gap-1" do %>
       <%= icon "folder-plus", css: "w-4" %>
       <div class="">フォルダを追加</div>
     <% end %>
   </ul>
 </div>
 
-<%= turbo_frame_tag "slide-over" %>
+<%= turbo_frame_tag "folder-slide-over" %>
