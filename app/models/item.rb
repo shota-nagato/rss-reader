@@ -24,6 +24,8 @@ class Item < ApplicationRecord
 
   has_many :user_items, dependent: :destroy
   has_many :users, through: :user_items
+  has_many :item_tags, dependent: :destroy
+  has_many :tags, through: :item_tags
 
   validates :title, :url, :published_at, presence: true
   validates :url, uniqueness: true
